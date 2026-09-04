@@ -499,7 +499,10 @@
     "card": {
       "budget": "Budget",
       "of": "Of",
-      "transactions": "Transactions"
+      "transactions": "Transactions",
+      "noBudget": "No budget set",
+      "overBudget": "Over budget",
+      "used": "Used"
     },
     "deleteModal": {
       "body": "This action cannot be undone. All transactions in this category will be uncategorized.",
@@ -518,8 +521,10 @@
       "onTrack": "On track",
       "overBudget": "Over budget",
       "totalBudget": "Total budget",
-      "totalSpent": "Total spent"
-    }
+      "totalSpent": "Total spent",
+      "totalCategories": "Total Categories"
+    },
+    "pageTitle": "Categories"
   },
   "cta": {
     "button": "Start Tracking",
@@ -626,7 +631,15 @@
       "exportTitle": "Export Data",
       "heading": "Data & Privacy",
       "privacyDesc": "Your expenses are encrypted and only visible to you.",
-      "privacyTitle": "Privacy"
+      "privacyTitle": "Privacy",
+      "cancelDelete": "Cancel",
+      "confirmDeleteBtn": "Delete Account",
+      "deleteAccount": "Delete Account",
+      "deleteConfirmPlaceholder": "Type your email to confirm",
+      "deleteConfirmPrompt": "This action cannot be undone. Enter your email to confirm deletion.",
+      "deleteWarning": "Deleting your account will permanently remove all data.",
+      "export": "Export Data",
+      "title": "Data & Privacy"
     },
     "deleteModal": {
       "body": "All your data will be permanently deleted. You cannot recover this account.",
@@ -645,7 +658,17 @@
       "pushNotifLabel": "Push Notifications",
       "saveBtn": "Save Changes",
       "savedMsg": "Preferences saved",
-      "themeLabel": "Theme"
+      "themeLabel": "Theme",
+      "currency": "Currency",
+      "emailNotif": "Email Notifications",
+      "emailNotifDesc": "Receive budget alerts and reports via email",
+      "monthlyBudget": "Monthly Budget",
+      "notifications": "Notifications",
+      "pushNotif": "Push Notifications",
+      "pushNotifDesc": "Get instant alerts when you exceed budget limits",
+      "save": "Save Changes",
+      "theme": "Theme",
+      "title": "Preferences"
     },
     "profile": {
       "avatarHint": "JPG or PNG, max 2MB",
@@ -655,7 +678,12 @@
       "fullNameLabel": "Full Name",
       "heading": "Profile",
       "saveBtn": "Save Profile",
-      "savedMsg": "Profile updated"
+      "savedMsg": "Profile updated",
+      "changeAvatar": "Change Avatar",
+      "email": "Email",
+      "fullName": "Full Name",
+      "save": "Save Profile",
+      "title": "Profile"
     },
     "security": {
       "badge": "Secure",
@@ -668,12 +696,20 @@
       "pwSavedMsg": "Password updated successfully",
       "twoFaDesc": "Add an extra layer of security to your account with two-factor authentication.",
       "twoFaTitle": "Two-Factor Authentication",
-      "updatePwBtn": "Update Password"
+      "updatePwBtn": "Update Password",
+      "changePassword": "Change Password",
+      "confirmPassword": "Confirm Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "title": "Security",
+      "twoFa": "Two-Factor Authentication",
+      "updatePassword": "Update Password"
     },
     "subtitle": "Manage your account, privacy, and security preferences",
     "title": "Settings",
     "heading": "Settings",
-    "subheading": "Manage your account and preferences"
+    "subheading": "Manage your account and preferences",
+    "saved": "Changes saved"
   },
   "testimonials": {
     "eyebrow": "Trusted by users",
@@ -720,5 +756,9 @@
     "item2": "Your data is yours alone",
     "item3": "GDPR compliant and privacy-focused",
     "label": "Why trust us"
+  },
+  "budget": {
+    "heading": "Budget Planner",
+    "subheading": "Set spending limits and track progress across categories."
   }
 }

@@ -10,9 +10,9 @@ import AppLayout from "@/components/AppLayout";
 
 const CURRENCY_OPTIONS = [
   { value: "USD", label: "USD ($)" },
-  { value: "EUR", label: "EUR (€)" },
-  { value: "GBP", label: "GBP (£)" },
-  { value: "JPY", label: "JPY (¥)" },
+  { value: "EUR", label: "EUR (\u20ac)" },
+  { value: "GBP", label: "GBP (\u00a3)" },
+  { value: "JPY", label: "JPY (\u00a5)" },
   { value: "CAD", label: "CAD (C$)" },
   { value: "AUD", label: "AUD (A$)" },
 ];
@@ -112,11 +112,11 @@ export default function SettingsPage() {
     "w-full h-11 rounded-lg border border-[var(--color-outline-variant)] bg-white px-3 text-sm text-[var(--color-on-surface)] placeholder:text-[var(--color-on-surface-variant)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)] transition-all duration-200";
 
   const selectClass =
-    "w-full h-11 rounded-lg border border-[var(--color-outline-variant)] bg-white px-3 text-sm text-[var(--color-on-surface)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)] transition-all duration-200 appearance-none cursor-pointer";
+    "w-full h-11 rounded-lg border border-[var(--color-outline-variant)] bg-white px-3 text-sm text-[var(--color-on-surface)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)] transition-all duration-200 cursor-pointer";
 
   return (
     <AppLayout pageTitle="Settings">
-      <div className="min-h-screen bg-[var(--color-surface)] px-6 py-8">
+      <div className="max-w-[900px] mx-auto">
         {/* Page Header */}
         <Reveal>
           <div className="mb-8">
@@ -129,64 +129,68 @@ export default function SettingsPage() {
           </div>
         </Reveal>
 
-        <div className="flex flex-col lg:flex-row gap-6 max-w-5xl">
-          {/* Left Tab Panel */}
-          <Reveal className="lg:w-56 shrink-0">
-            <nav className="bg-white rounded-2xl border border-[var(--color-outline-variant)] shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.03)] overflow-hidden">
-              {TABS.map((tab) => {
-                const Icon = tab.icon;
-                const isActive = activeTab === tab.key;
-                return (
-                  <button
-                    key={tab.key}
-                    onClick={() => setActiveTab(tab.key)}
-                    className={cn(
-                      "w-full flex items-center gap-3 px-4 py-3.5 text-sm font-medium transition-all duration-200 border-l-2",
-                      isActive
-                        ? "border-[var(--color-primary)] bg-[var(--color-surface-container-low)] text-[var(--color-primary)]"
-                        : "border-transparent text-[var(--color-on-surface-variant)] hover:bg-[var(--color-surface-container-low)] hover:text-[var(--color-on-surface)]"
-                    )}
-                  >
-                    <Icon className="h-4 w-4 shrink-0" />
-                    {tab.label}
-                  </button>
-                );
-              })}
+        <div className="flex flex-col md:flex-row gap-6">
+          {/* Tab Sidebar */}
+          <Reveal className="md:w-52 shrink-0">
+            <nav
+              className="bg-white rounded-2xl border border-[var(--color-outline-variant)] shadow-[0_1px_3px_rgba(0,0,0,0.05)] p-2 flex flex-row md:flex-col gap-1"
+              aria-label="Settings tabs"
+            >
+              {TABS.map(({ key, label, icon: Icon }) => (
+                <button
+                  key={key}
+                  onClick={() => setActiveTab(key)}
+                  className={cn(
+                    "flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 w-full text-left",
+                    activeTab === key
+                      ? "bg-[var(--color-surface-container)] text-[var(--color-primary)]"
+                      : "text-[var(--color-on-surface-variant)] hover:bg-[var(--color-surface-container-low)] hover:text-[var(--color-on-surface)]"
+                  )}
+                  aria-current={activeTab === key ? "page" : undefined}
+                >
+                  <Icon className="h-4 w-4 shrink-0" />
+                  <span className="hidden md:inline">{label}</span>
+                </button>
+              ))}
             </nav>
           </Reveal>
 
-          {/* Right Content Area */}
+          {/* Tab Content */}
           <div className="flex-1 min-w-0">
-            {/* PROFILE TAB */}
+            {/* ── PROFILE TAB ── */}
             {activeTab === "profile" && (
               <Reveal>
-                <div className="bg-white rounded-2xl border border-[var(--color-outline-variant)] shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.03)] p-6">
-                  <h2 className="text-lg font-semibold text-[var(--color-on-surface)] mb-1">Profile Information</h2>
-                  <p className="text-sm text-[var(--color-on-surface-variant)] mb-6">Update your name, email, and profile photo.</p>
+                <div className="bg-white rounded-2xl border border-[var(--color-outline-variant)] shadow-[0_1px_3px_rgba(0,0,0,0.05)] p-6">
+                  <h2 className="text-lg font-semibold text-[var(--color-on-surface)] mb-5">
+                    {t("settings.profile.title")}
+                  </h2>
 
-                  {/* Avatar Upload */}
-                  <div className="flex items-center gap-5 mb-6 pb-6 border-b border-[var(--color-outline-variant)]">
-                    <div className="w-20 h-20 rounded-full bg-[var(--color-primary-container)] flex items-center justify-center shrink-0 border-2 border-[var(--color-outline-variant)]">
-                      <span className="text-2xl font-bold text-[var(--color-primary)]">
-                        {fullName.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2)}
+                  {/* Avatar */}
+                  <div className="flex items-center gap-4 mb-6 pb-6 border-b border-[var(--color-outline-variant)]">
+                    <div className="w-16 h-16 rounded-full bg-[var(--color-primary-container)] flex items-center justify-center shrink-0">
+                      <span className="text-xl font-bold text-[var(--color-primary)]">
+                        {fullName
+                          .split(" ")
+                          .map((n) => n[0])
+                          .join("")
+                          .toUpperCase()
+                          .slice(0, 2)}
                       </span>
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-[var(--color-on-surface)] mb-1">{fullName}</p>
-                      <p className="text-xs text-[var(--color-on-surface-variant)] mb-3">{email}</p>
-                      <label className="cursor-pointer inline-flex items-center gap-2 rounded-lg border border-[var(--color-outline-variant)] bg-white px-3 py-1.5 text-xs font-medium text-[var(--color-on-surface)] hover:bg-[var(--color-surface-container-low)] transition-colors">
-                        <User className="h-3.5 w-3.5" />
-                        Upload Photo
-                        <input type="file" accept="image/*" className="hidden" />
-                      </label>
+                      <p className="text-sm font-semibold text-[var(--color-on-surface)]">{fullName}</p>
+                      <p className="text-xs text-[var(--color-on-surface-variant)] mt-0.5">{email}</p>
+                      <button className="mt-2 text-xs font-medium text-[var(--color-primary)] hover:underline transition-colors">
+                        {t("settings.profile.changeAvatar")}
+                      </button>
                     </div>
                   </div>
 
-                  {/* Form Fields */}
+                  {/* Form */}
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-xs font-semibold text-[var(--color-on-surface-variant)] uppercase tracking-wide mb-1.5">
-                        Full Name
+                      <label className="block text-xs font-semibold text-[var(--color-on-surface-variant)] uppercase tracking-wider mb-1.5">
+                        {t("settings.profile.fullName")}
                       </label>
                       <input
                         type="text"
@@ -197,8 +201,8 @@ export default function SettingsPage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold text-[var(--color-on-surface-variant)] uppercase tracking-wide mb-1.5">
-                        Email Address
+                      <label className="block text-xs font-semibold text-[var(--color-on-surface-variant)] uppercase tracking-wider mb-1.5">
+                        {t("settings.profile.email")}
                       </label>
                       <input
                         type="email"
@@ -213,304 +217,393 @@ export default function SettingsPage() {
                   <div className="mt-6 flex items-center gap-3">
                     <button
                       onClick={handleProfileSave}
-                      className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-primary)] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[var(--color-primary-container)] transition-colors"
+                      className="flex items-center gap-2 rounded-lg bg-[var(--color-primary)] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:opacity-90 hover:shadow-md"
                     >
-                      {profileSaved ? <Check className="h-4 w-4" /> : null}
-                      {profileSaved ? "Saved!" : "Save Changes"}
+                      {profileSaved ? (
+                        <>
+                          <Check className="h-4 w-4" />
+                          {t("settings.saved")}
+                        </>
+                      ) : (
+                        t("settings.profile.save")
+                      )}
                     </button>
-                    {profileSaved && (
-                      <span className="text-sm text-[var(--color-secondary)] font-medium">Profile updated successfully.</span>
-                    )}
                   </div>
                 </div>
               </Reveal>
             )}
 
-            {/* SECURITY TAB */}
+            {/* ── SECURITY TAB ── */}
             {activeTab === "security" && (
               <Reveal>
-                <div className="space-y-5">
-                  {/* Change Password */}
-                  <div className="bg-white rounded-2xl border border-[var(--color-outline-variant)] shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.03)] p-6">
-                    <h2 className="text-lg font-semibold text-[var(--color-on-surface)] mb-1">Change Password</h2>
-                    <p className="text-sm text-[var(--color-on-surface-variant)] mb-5">Use a strong password of at least 8 characters.</p>
+                <div className="bg-white rounded-2xl border border-[var(--color-outline-variant)] shadow-[0_1px_3px_rgba(0,0,0,0.05)] p-6 space-y-6">
+                  <h2 className="text-lg font-semibold text-[var(--color-on-surface)]">
+                    {t("settings.security.title")}
+                  </h2>
 
-                    <div className="space-y-4">
-                      {[
-                        { label: "Current Password", value: currentPw, setter: setCurrentPw, show: showCurrentPw, toggle: () => setShowCurrentPw((v) => !v) },
-                        { label: "New Password", value: newPw, setter: setNewPw, show: showNewPw, toggle: () => setShowNewPw((v) => !v) },
-                        { label: "Confirm New Password", value: confirmPw, setter: setConfirmPw, show: showConfirmPw, toggle: () => setShowConfirmPw((v) => !v) },
-                      ].map((field) => (
-                        <div key={field.label}>
-                          <label className="block text-xs font-semibold text-[var(--color-on-surface-variant)] uppercase tracking-wide mb-1.5">
-                            {field.label}
-                          </label>
-                          <div className="relative">
-                            <input
-                              type={field.show ? "text" : "password"}
-                              value={field.value}
-                              onChange={(e) => field.setter(e.target.value)}
-                              className={cn(inputClass, "pr-10")}
-                              placeholder="••••••••"
-                            />
-                            <button
-                              type="button"
-                              onClick={field.toggle}
-                              className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-on-surface-variant)] hover:text-[var(--color-on-surface)] transition-colors"
-                            >
-                              {field.show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                            </button>
-                          </div>
+                  {/* Change Password */}
+                  <div className="pb-6 border-b border-[var(--color-outline-variant)]">
+                    <h3 className="text-sm font-semibold text-[var(--color-on-surface)] mb-4">
+                      {t("settings.security.changePassword")}
+                    </h3>
+                    <div className="space-y-3">
+                      {/* Current Password */}
+                      <div>
+                        <label className="block text-xs font-semibold text-[var(--color-on-surface-variant)] uppercase tracking-wider mb-1.5">
+                          {t("settings.security.currentPassword")}
+                        </label>
+                        <div className="relative">
+                          <input
+                            type={showCurrentPw ? "text" : "password"}
+                            value={currentPw}
+                            onChange={(e) => setCurrentPw(e.target.value)}
+                            className={cn(inputClass, "pr-10")}
+                            placeholder="\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => setShowCurrentPw((v) => !v)}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-on-surface-variant)] hover:text-[var(--color-on-surface)] transition-colors"
+                            aria-label={showCurrentPw ? "Hide password" : "Show password"}
+                          >
+                            {showCurrentPw ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                          </button>
                         </div>
-                      ))}
+                      </div>
+
+                      {/* New Password */}
+                      <div>
+                        <label className="block text-xs font-semibold text-[var(--color-on-surface-variant)] uppercase tracking-wider mb-1.5">
+                          {t("settings.security.newPassword")}
+                        </label>
+                        <div className="relative">
+                          <input
+                            type={showNewPw ? "text" : "password"}
+                            value={newPw}
+                            onChange={(e) => setNewPw(e.target.value)}
+                            className={cn(inputClass, "pr-10")}
+                            placeholder="\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => setShowNewPw((v) => !v)}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-on-surface-variant)] hover:text-[var(--color-on-surface)] transition-colors"
+                            aria-label={showNewPw ? "Hide password" : "Show password"}
+                          >
+                            {showNewPw ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Confirm Password */}
+                      <div>
+                        <label className="block text-xs font-semibold text-[var(--color-on-surface-variant)] uppercase tracking-wider mb-1.5">
+                          {t("settings.security.confirmPassword")}
+                        </label>
+                        <div className="relative">
+                          <input
+                            type={showConfirmPw ? "text" : "password"}
+                            value={confirmPw}
+                            onChange={(e) => setConfirmPw(e.target.value)}
+                            className={cn(inputClass, "pr-10")}
+                            placeholder="\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => setShowConfirmPw((v) => !v)}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-on-surface-variant)] hover:text-[var(--color-on-surface)] transition-colors"
+                            aria-label={showConfirmPw ? "Hide password" : "Show password"}
+                          >
+                            {showConfirmPw ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                          </button>
+                        </div>
+                      </div>
                     </div>
 
                     {pwError && (
-                      <p className="mt-3 text-sm text-[var(--color-error)] flex items-center gap-1.5">
+                      <p className="mt-3 flex items-center gap-1.5 text-sm text-[var(--color-error)]">
                         <AlertTriangle className="h-4 w-4 shrink-0" />
                         {pwError}
                       </p>
                     )}
 
-                    <div className="mt-5 flex items-center gap-3">
+                    <div className="mt-4 flex items-center gap-3">
                       <button
                         onClick={handlePasswordSave}
-                        className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-primary)] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[var(--color-primary-container)] transition-colors"
+                        className="flex items-center gap-2 rounded-lg bg-[var(--color-primary)] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:opacity-90 hover:shadow-md"
                       >
-                        {pwSaved ? <Check className="h-4 w-4" /> : <Lock className="h-4 w-4" />}
-                        {pwSaved ? "Password Updated!" : "Update Password"}
+                        {pwSaved ? (
+                          <>
+                            <Check className="h-4 w-4" />
+                            {t("settings.saved")}
+                          </>
+                        ) : (
+                          t("settings.security.updatePassword")
+                        )}
                       </button>
                     </div>
                   </div>
 
-                  {/* 2FA Toggle */}
-                  <div className="bg-white rounded-2xl border border-[var(--color-outline-variant)] shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.03)] p-6">
+                  {/* 2FA */}
+                  <div>
                     <div className="flex items-center justify-between gap-4">
                       <div>
-                        <h3 className="text-base font-semibold text-[var(--color-on-surface)]">Two-Factor Authentication</h3>
-                        <p className="text-sm text-[var(--color-on-surface-variant)] mt-0.5">
-                          Add an extra layer of security to your account.
+                        <h3 className="text-sm font-semibold text-[var(--color-on-surface)]">
+                          {t("settings.security.twoFa")}
+                        </h3>
+                        <p className="text-xs text-[var(--color-on-surface-variant)] mt-0.5">
+                          {t("settings.security.twoFaDesc")}
                         </p>
                       </div>
                       <button
-                        onClick={() => setTwoFaEnabled((v) => !v)}
-                        className={cn(
-                          "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]",
-                          twoFaEnabled ? "bg-[var(--color-primary)]" : "bg-[var(--color-outline-variant)]"
-                        )}
                         role="switch"
                         aria-checked={twoFaEnabled}
+                        onClick={() => setTwoFaEnabled((v) => !v)}
+                        className={cn(
+                          "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]",
+                          twoFaEnabled ? "bg-[var(--color-primary)]" : "bg-[var(--color-outline-variant)]"
+                        )}
                       >
                         <span
                           className={cn(
-                            "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200",
+                            "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out",
                             twoFaEnabled ? "translate-x-5" : "translate-x-0"
                           )}
                         />
                       </button>
                     </div>
-                    {twoFaEnabled && (
-                      <p className="mt-3 text-xs text-[var(--color-secondary)] bg-[var(--color-secondary-container)]/20 rounded-lg px-3 py-2">
-                        2FA is active. Your account is protected with an additional verification step.
-                      </p>
-                    )}
                   </div>
                 </div>
               </Reveal>
             )}
 
-            {/* PREFERENCES TAB */}
+            {/* ── PREFERENCES TAB ── */}
             {activeTab === "preferences" && (
               <Reveal>
-                <div className="bg-white rounded-2xl border border-[var(--color-outline-variant)] shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.03)] p-6">
-                  <h2 className="text-lg font-semibold text-[var(--color-on-surface)] mb-1">Preferences</h2>
-                  <p className="text-sm text-[var(--color-on-surface-variant)] mb-6">Customize your SpendWise experience.</p>
+                <div className="bg-white rounded-2xl border border-[var(--color-outline-variant)] shadow-[0_1px_3px_rgba(0,0,0,0.05)] p-6 space-y-6">
+                  <h2 className="text-lg font-semibold text-[var(--color-on-surface)]">
+                    {t("settings.preferences.title")}
+                  </h2>
 
-                  <div className="space-y-5">
-                    {/* Currency */}
-                    <div>
-                      <label className="block text-xs font-semibold text-[var(--color-on-surface-variant)] uppercase tracking-wide mb-1.5">
-                        Default Currency
-                      </label>
-                      <div className="relative">
-                        <select
-                          value={currency}
-                          onChange={(e) => setCurrency(e.target.value)}
-                          className={selectClass}
-                        >
-                          {CURRENCY_OPTIONS.map((opt) => (
-                            <option key={opt.value} value={opt.value}>{opt.label}</option>
-                          ))}
-                        </select>
-                        <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-on-surface-variant)]">
-                          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </span>
-                      </div>
-                    </div>
+                  {/* Currency */}
+                  <div className="pb-6 border-b border-[var(--color-outline-variant)]">
+                    <label className="block text-xs font-semibold text-[var(--color-on-surface-variant)] uppercase tracking-wider mb-1.5">
+                      {t("settings.preferences.currency")}
+                    </label>
+                    <select
+                      value={currency}
+                      onChange={(e) => setCurrency(e.target.value)}
+                      className={selectClass}
+                    >
+                      {CURRENCY_OPTIONS.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-                    {/* Theme */}
-                    <div>
-                      <label className="block text-xs font-semibold text-[var(--color-on-surface-variant)] uppercase tracking-wide mb-1.5">
-                        Theme
-                      </label>
-                      <div className="relative">
-                        <select
-                          value={theme}
-                          onChange={(e) => setTheme(e.target.value)}
-                          className={selectClass}
-                        >
-                          {THEME_OPTIONS.map((opt) => (
-                            <option key={opt.value} value={opt.value}>{opt.label}</option>
-                          ))}
-                        </select>
-                        <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-on-surface-variant)]">
-                          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </span>
-                      </div>
-                    </div>
+                  {/* Theme */}
+                  <div className="pb-6 border-b border-[var(--color-outline-variant)]">
+                    <label className="block text-xs font-semibold text-[var(--color-on-surface-variant)] uppercase tracking-wider mb-1.5">
+                      {t("settings.preferences.theme")}
+                    </label>
+                    <select
+                      value={theme}
+                      onChange={(e) => setTheme(e.target.value)}
+                      className={selectClass}
+                    >
+                      {THEME_OPTIONS.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-                    {/* Monthly Budget */}
-                    <div>
-                      <label className="block text-xs font-semibold text-[var(--color-on-surface-variant)] uppercase tracking-wide mb-1.5">
-                        Monthly Budget (USD)
-                      </label>
+                  {/* Monthly Budget */}
+                  <div className="pb-6 border-b border-[var(--color-outline-variant)]">
+                    <label className="block text-xs font-semibold text-[var(--color-on-surface-variant)] uppercase tracking-wider mb-1.5">
+                      {t("settings.preferences.monthlyBudget")}
+                    </label>
+                    <div className="relative">
+                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-[var(--color-on-surface-variant)]">
+                        $
+                      </span>
                       <input
                         type="number"
                         value={monthlyBudget}
                         onChange={(e) => setMonthlyBudget(e.target.value)}
-                        className={inputClass}
+                        className={cn(inputClass, "pl-7")}
                         placeholder="3000"
                         min="0"
                       />
                     </div>
+                  </div>
 
-                    {/* Notifications */}
-                    <div className="pt-2 border-t border-[var(--color-outline-variant)]">
-                      <p className="text-xs font-semibold text-[var(--color-on-surface-variant)] uppercase tracking-wide mb-3">Notifications</p>
-                      <div className="space-y-3">
-                        {[
-                          { label: "Email Notifications", desc: "Receive weekly spending summaries via email.", value: emailNotif, setter: setEmailNotif },
-                          { label: "Push Notifications", desc: "Get alerts when you approach your budget limit.", value: pushNotif, setter: setPushNotif },
-                        ].map((notif) => (
-                          <label key={notif.label} className="flex items-start gap-3 cursor-pointer group">
-                            <div className="relative mt-0.5">
-                              <input
-                                type="checkbox"
-                                checked={notif.value}
-                                onChange={(e) => notif.setter(e.target.checked)}
-                                className="sr-only"
-                              />
-                              <div
-                                className={cn(
-                                  "w-5 h-5 rounded border-2 flex items-center justify-center transition-colors",
-                                  notif.value
-                                    ? "bg-[var(--color-primary)] border-[var(--color-primary)]"
-                                    : "border-[var(--color-outline-variant)] bg-white"
-                                )}
-                              >
-                                {notif.value && <Check className="h-3 w-3 text-white" />}
-                              </div>
-                            </div>
-                            <div>
-                              <p className="text-sm font-medium text-[var(--color-on-surface)]">{notif.label}</p>
-                              <p className="text-xs text-[var(--color-on-surface-variant)]">{notif.desc}</p>
-                            </div>
-                          </label>
-                        ))}
+                  {/* Notifications */}
+                  <div>
+                    <h3 className="text-sm font-semibold text-[var(--color-on-surface)] mb-4">
+                      {t("settings.preferences.notifications")}
+                    </h3>
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between gap-4">
+                        <div>
+                          <p className="text-sm font-medium text-[var(--color-on-surface)]">
+                            {t("settings.preferences.emailNotif")}
+                          </p>
+                          <p className="text-xs text-[var(--color-on-surface-variant)] mt-0.5">
+                            {t("settings.preferences.emailNotifDesc")}
+                          </p>
+                        </div>
+                        <button
+                          role="switch"
+                          aria-checked={emailNotif}
+                          onClick={() => setEmailNotif((v) => !v)}
+                          className={cn(
+                            "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200",
+                            emailNotif ? "bg-[var(--color-primary)]" : "bg-[var(--color-outline-variant)]"
+                          )}
+                        >
+                          <span
+                            className={cn(
+                              "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out",
+                              emailNotif ? "translate-x-5" : "translate-x-0"
+                            )}
+                          />
+                        </button>
+                      </div>
+
+                      <div className="flex items-center justify-between gap-4">
+                        <div>
+                          <p className="text-sm font-medium text-[var(--color-on-surface)]">
+                            {t("settings.preferences.pushNotif")}
+                          </p>
+                          <p className="text-xs text-[var(--color-on-surface-variant)] mt-0.5">
+                            {t("settings.preferences.pushNotifDesc")}
+                          </p>
+                        </div>
+                        <button
+                          role="switch"
+                          aria-checked={pushNotif}
+                          onClick={() => setPushNotif((v) => !v)}
+                          className={cn(
+                            "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200",
+                            pushNotif ? "bg-[var(--color-primary)]" : "bg-[var(--color-outline-variant)]"
+                          )}
+                        >
+                          <span
+                            className={cn(
+                              "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out",
+                              pushNotif ? "translate-x-5" : "translate-x-0"
+                            )}
+                          />
+                        </button>
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-6 flex items-center gap-3">
+                  <div className="flex items-center gap-3">
                     <button
                       onClick={handlePrefSave}
-                      className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-primary)] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[var(--color-primary-container)] transition-colors"
+                      className="flex items-center gap-2 rounded-lg bg-[var(--color-primary)] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:opacity-90 hover:shadow-md"
                     >
-                      {prefSaved ? <Check className="h-4 w-4" /> : null}
-                      {prefSaved ? "Saved!" : "Save Preferences"}
+                      {prefSaved ? (
+                        <>
+                          <Check className="h-4 w-4" />
+                          {t("settings.saved")}
+                        </>
+                      ) : (
+                        t("settings.preferences.save")
+                      )}
                     </button>
-                    {prefSaved && (
-                      <span className="text-sm text-[var(--color-secondary)] font-medium">Preferences saved.</span>
-                    )}
                   </div>
                 </div>
               </Reveal>
             )}
 
-            {/* DATA & PRIVACY TAB */}
+            {/* ── DATA & PRIVACY TAB ── */}
             {activeTab === "data" && (
               <Reveal>
-                <div className="space-y-5">
+                <div className="bg-white rounded-2xl border border-[var(--color-outline-variant)] shadow-[0_1px_3px_rgba(0,0,0,0.05)] p-6 space-y-6">
+                  <h2 className="text-lg font-semibold text-[var(--color-on-surface)]">
+                    {t("settings.data.title")}
+                  </h2>
+
                   {/* Export */}
-                  <div className="bg-white rounded-2xl border border-[var(--color-outline-variant)] shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.03)] p-6">
-                    <h2 className="text-lg font-semibold text-[var(--color-on-surface)] mb-1">Export Your Data</h2>
-                    <p className="text-sm text-[var(--color-on-surface-variant)] mb-5">
-                      Download a CSV file containing all your expense records. Your data belongs to you.
+                  <div className="pb-6 border-b border-[var(--color-outline-variant)]">
+                    <h3 className="text-sm font-semibold text-[var(--color-on-surface)] mb-1">
+                      {t("settings.data.export")}
+                    </h3>
+                    <p className="text-xs text-[var(--color-on-surface-variant)] mb-4">
+                      {t("settings.data.exportDesc")}
                     </p>
                     <button
                       onClick={handleExportCSV}
-                      className="inline-flex items-center gap-2 rounded-lg border border-[var(--color-outline-variant)] bg-white px-5 py-2.5 text-sm font-semibold text-[var(--color-on-surface)] hover:bg-[var(--color-surface-container-low)] transition-colors shadow-sm"
+                      className="flex items-center gap-2 rounded-lg border border-[var(--color-outline-variant)] bg-white px-4 py-2.5 text-sm font-medium text-[var(--color-on-surface)] shadow-sm transition-all duration-200 hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:shadow-md"
                     >
                       <Download className="h-4 w-4" />
-                      Export as CSV
+                      {t("settings.data.exportBtn")}
                     </button>
                   </div>
 
                   {/* Delete Account */}
-                  <div className="bg-white rounded-2xl border border-[var(--color-danger)]/30 shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.03)] p-6">
-                    <div className="flex items-start gap-3 mb-4">
-                      <div className="w-9 h-9 rounded-lg bg-[var(--color-error-container)] flex items-center justify-center shrink-0">
-                        <AlertTriangle className="h-5 w-5 text-[var(--color-error)]" />
-                      </div>
-                      <div>
-                        <h2 className="text-lg font-semibold text-[var(--color-error)]">Delete Account</h2>
-                        <p className="text-sm text-[var(--color-on-surface-variant)] mt-0.5">
-                          Permanently delete your account and all associated data. This action cannot be undone.
-                        </p>
-                      </div>
-                    </div>
+                  <div>
+                    <h3 className="text-sm font-semibold text-[var(--color-error)] mb-1">
+                      {t("settings.data.deleteAccount")}
+                    </h3>
+                    <p className="text-xs text-[var(--color-on-surface-variant)] mb-4">
+                      {t("settings.data.deleteDesc")}
+                    </p>
 
                     {!showDeleteModal ? (
                       <button
                         onClick={() => setShowDeleteModal(true)}
-                        className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-error)] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 transition-opacity"
+                        className="flex items-center gap-2 rounded-lg border border-[var(--color-error)] px-4 py-2.5 text-sm font-medium text-[var(--color-error)] transition-all duration-200 hover:bg-red-50"
                       >
                         <Trash2 className="h-4 w-4" />
-                        Delete My Account
+                        {t("settings.data.deleteBtn")}
                       </button>
                     ) : (
                       <motion.div
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="space-y-3"
+                        className="rounded-xl border border-[var(--color-error)] bg-red-50 p-4"
                       >
-                        <p className="text-sm font-medium text-[var(--color-on-surface)]">
-                          Type <span className="font-mono font-bold text-[var(--color-error)]">DELETE</span> to confirm:
-                        </p>
+                        <div className="flex items-start gap-3 mb-4">
+                          <AlertTriangle className="h-5 w-5 text-[var(--color-error)] shrink-0 mt-0.5" />
+                          <div>
+                            <p className="text-sm font-semibold text-[var(--color-error)]">
+                              {t("settings.data.deleteWarning")}
+                            </p>
+                            <p className="text-xs text-[var(--color-on-surface-variant)] mt-1">
+                              {t("settings.data.deleteConfirmPrompt")}
+                            </p>
+                          </div>
+                        </div>
                         <input
                           type="text"
                           value={deleteConfirm}
                           onChange={(e) => setDeleteConfirm(e.target.value)}
-                          className={cn(inputClass, "border-[var(--color-error)]/40 focus:ring-[var(--color-error)]" )}
-                          placeholder="Type DELETE to confirm"
+                          placeholder={t("settings.data.deleteConfirmPlaceholder")}
+                          className="w-full h-10 rounded-lg border border-[var(--color-error)] bg-white px-3 text-sm text-[var(--color-on-surface)] placeholder:text-[var(--color-on-surface-variant)] focus:outline-none focus:ring-2 focus:ring-[var(--color-error)] mb-3"
                         />
                         <div className="flex items-center gap-3">
                           <button
                             disabled={deleteConfirm !== "DELETE"}
-                            className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-error)] px-5 py-2.5 text-sm font-semibold text-white disabled:opacity-40 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
+                            className="flex items-center gap-2 rounded-lg bg-[var(--color-error)] px-4 py-2 text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed"
                           >
                             <Trash2 className="h-4 w-4" />
-                            Confirm Delete
+                            {t("settings.data.confirmDeleteBtn")}
                           </button>
                           <button
-                            onClick={() => { setShowDeleteModal(false); setDeleteConfirm(""); }}
-                            className="text-sm text-[var(--color-on-surface-variant)] hover:text-[var(--color-on-surface)] transition-colors"
+                            onClick={() => {
+                              setShowDeleteModal(false);
+                              setDeleteConfirm("");
+                            }}
+                            className="rounded-lg border border-[var(--color-outline-variant)] px-4 py-2 text-sm font-medium text-[var(--color-on-surface-variant)] transition-all duration-200 hover:bg-[var(--color-surface-container-low)]"
                           >
-                            Cancel
+                            {t("settings.data.cancelDelete")}
                           </button>
                         </div>
                       </motion.div>

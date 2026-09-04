@@ -20,22 +20,22 @@
     "profile": "Perfil"
   },
   "footer": {
-    "tagline": "Toma control de cada dólar que gastas. Privado, seguro y diseñado para personas reales.",
+    "tagline": "Toma el control de cada peso que gastas. Privado, seguro y diseñado para personas reales.",
     "copyright": "© 2024 SpendWise. Todos los derechos reservados.",
-    "madeWith": "Construido con cuidado para tu bienestar financiero."
+    "madeWith": "Creado con cuidado para tu bienestar financiero."
   },
   "home": {
     "badge": "Privado y Seguro — Tus datos están encriptados",
     "hero": {
-      "title": "Toma control de cada dólar que gastas.",
-      "subtitle": "SpendWise te da una visión cristalina de tus finanzas — rastrea gastos por categoría, identifica patrones de gasto y mantente dentro del presupuesto cada mes.",
-      "cta": "Comenzar a Rastrear Gratis",
-      "demo": "Ver Panel de Control Demo"
+      "title": "Toma el control de cada peso que gastas.",
+      "subtitle": "SpendWise te da una visión cristalina de tus finanzas — registra gastos por categoría, identifica patrones de gasto y mantente dentro del presupuesto cada mes.",
+      "cta": "Comenzar a Registrar Gratis",
+      "demo": "Ver Panel de Demostración"
     },
     "cta": {
       "heading": "¿Listo para dejar de preguntarte dónde fue tu dinero?",
-      "body": "Únete a miles de personas que han tomado control de sus finanzas con SpendWise. Gratis para comenzar, sin tarjeta de crédito requerida.",
-      "button": "Crear Tu Cuenta Gratuita"
+      "body": "Únete a miles de personas que han tomado el control de sus finanzas con SpendWise. Gratis para comenzar, sin tarjeta de crédito requerida.",
+      "button": "Crear tu Cuenta Gratuita"
     },
     "features": [
       {
@@ -179,7 +179,7 @@
     "namePlaceholder": "Juan Pérez",
     "noAccount": "¿No tienes cuenta?",
     "panel": {
-      "headline": "Bienvenido de Nuevo",
+      "headline": "Bienvenido de Vuelta",
       "subheadline": "Inicia sesión en tu gestor de gastos"
     },
     "passwordLabel": "Contraseña",
@@ -195,7 +195,7 @@
       "signUpLink": "Crear una cuenta",
       "subheading": "Accede a tu panel de gastos",
       "submitButton": "Iniciar Sesión",
-      "successMessage": "¡Bienvenido de nuevo! Redirigiendo..."
+      "successMessage": "¡Bienvenido! Redirigiendo..."
     },
     "signinButton": "Iniciar Sesión",
     "signinHeading": "Inicia Sesión en Tu Cuenta",
@@ -216,7 +216,7 @@
     "signupButton": "Registrarse",
     "signupHeading": "Registrarse",
     "signupLink": "Crear una cuenta",
-    "signupSubheading": "Únete a miles que rastrean de forma inteligente",
+    "signupSubheading": "Únete a miles que rastrean de forma más inteligente",
     "tabs": {
       "signIn": "Iniciar sesión",
       "signUp": "Registrarse"
@@ -272,14 +272,17 @@
     "totalCategories": "Categorías Totales",
     "totalSpent": "Total Gastado",
     "transactions": "Transacciones",
-    "used": "Usado",
+    "used": "Utilizado",
     "card": {
       "budget": "Presupuesto",
       "of": "De",
-      "transactions": "Transacciones"
+      "transactions": "Transacciones",
+      "noBudget": "Sin presupuesto establecido",
+      "overBudget": "Presupuesto excedido",
+      "used": "Utilizado"
     },
     "deleteModal": {
-      "body": "Esta acción no se puede deshacer. Todas las transacciones en esta categoría quedarán sin categorizar.",
+      "body": "Esta acción no se puede deshacer. Todas las transacciones en esta categoría serán sin categorizar.",
       "cancel": "Cancelar",
       "confirm": "Eliminar",
       "subtitle": "¿Estás seguro?",
@@ -295,14 +298,16 @@
       "onTrack": "En camino",
       "overBudget": "Presupuesto excedido",
       "totalBudget": "Presupuesto total",
-      "totalSpent": "Total gastado"
-    }
+      "totalSpent": "Total gastado",
+      "totalCategories": "Categorías Totales"
+    },
+    "pageTitle": "Categorías"
   },
   "cta": {
     "button": "Comenzar a Rastrear",
-    "footnote": "Sin tarjeta de crédito requerida. Gratuito para siempre.",
+    "footnote": "Sin tarjeta de crédito requerida. Gratis por siempre.",
     "headline": "Toma Control de Tus Gastos",
-    "subheadline": "Registra cada gasto, identifica patrones y alcanza tus objetivos financieros."
+    "subheadline": "Rastrea cada gasto, identifica patrones y alcanza tus objetivos financieros."
   },
   "dashboard": {
     "addExpense": "Agregar Gasto",
@@ -310,7 +315,7 @@
     "categories": "Categorías",
     "daysLeft": "días restantes",
     "logTransaction": "Registrar Gasto",
-    "monthlySpending": "Gastos Mensuales",
+    "monthlySpending": "Gasto Mensual",
     "ofBudget": "del presupuesto",
     "privateBadge": "Privado",
     "recentTransactions": "Transacciones Recientes",
@@ -359,12 +364,12 @@
     "headline": "Tu dinero, tus reglas",
     "preview_label": "Vista previa del panel",
     "preview_sub": "Seguimiento de gastos en tiempo real de un vistazo",
-    "subheadline": "Rastrea cada gasto, visualiza tu gasto y desarrolla mejores hábitos financieros."
+    "subheadline": "Registra cada gasto, visualiza tu gasto y desarrolla mejores hábitos financieros."
   },
   "howItWorks": {
     "eyebrow": "Primeros pasos",
     "headline": "Tres pasos hacia la claridad financiera",
-    "subheadline": "Configura tu cuenta y comienza a rastrear en minutos."
+    "subheadline": "Configura tu cuenta y comienza a hacer seguimiento en minutos."
   },
   "reports": {
     "categorySplit": "Desglose por Categoría",
@@ -378,7 +383,7 @@
       "budgetAdherence": "Cumplimiento del Presupuesto",
       "highestCategory": "Categoría Principal"
     },
-    "subheading": "Monitorea tus patrones de gasto e información",
+    "subheading": "Realiza un seguimiento de tus patrones de gasto e información",
     "table": {
       "income": "Ingresos",
       "month": "Mes",
@@ -403,7 +408,15 @@
       "exportTitle": "Exportar Datos",
       "heading": "Datos y Privacidad",
       "privacyDesc": "Tus gastos están encriptados y solo son visibles para ti.",
-      "privacyTitle": "Privacidad"
+      "privacyTitle": "Privacidad",
+      "cancelDelete": "Cancelar",
+      "confirmDeleteBtn": "Eliminar Cuenta",
+      "deleteAccount": "Eliminar Cuenta",
+      "deleteConfirmPlaceholder": "Escribe tu correo para confirmar",
+      "deleteConfirmPrompt": "Esta acción no se puede deshacer. Ingresa tu correo para confirmar la eliminación.",
+      "deleteWarning": "Eliminar tu cuenta eliminará permanentemente todos los datos.",
+      "export": "Exportar Datos",
+      "title": "Datos y Privacidad"
     },
     "deleteModal": {
       "body": "Todos tus datos se eliminarán permanentemente. No puedes recuperar esta cuenta.",
@@ -416,23 +429,38 @@
       "budgetHint": "Establece un límite de gasto mensual",
       "budgetLabel": "Presupuesto Mensual",
       "currencyLabel": "Moneda",
-      "emailNotifLabel": "Notificaciones por Correo",
+      "emailNotifLabel": "Notificaciones por Email",
       "heading": "Preferencias",
       "notifHeading": "Notificaciones",
       "pushNotifLabel": "Notificaciones Push",
       "saveBtn": "Guardar Cambios",
       "savedMsg": "Preferencias guardadas",
-      "themeLabel": "Tema"
+      "themeLabel": "Tema",
+      "currency": "Moneda",
+      "emailNotif": "Notificaciones por Email",
+      "emailNotifDesc": "Recibe alertas de presupuesto e informes por email",
+      "monthlyBudget": "Presupuesto Mensual",
+      "notifications": "Notificaciones",
+      "pushNotif": "Notificaciones Push",
+      "pushNotifDesc": "Recibe alertas instantáneas cuando excedas los límites de presupuesto",
+      "save": "Guardar Cambios",
+      "theme": "Tema",
+      "title": "Preferencias"
     },
     "profile": {
       "avatarHint": "JPG o PNG, máximo 2MB",
       "avatarLabel": "Foto de Perfil",
       "changePhoto": "Cambiar Foto",
-      "emailLabel": "Correo Electrónico",
+      "emailLabel": "Email",
       "fullNameLabel": "Nombre Completo",
       "heading": "Perfil",
       "saveBtn": "Guardar Perfil",
-      "savedMsg": "Perfil actualizado"
+      "savedMsg": "Perfil actualizado",
+      "changeAvatar": "Cambiar Avatar",
+      "email": "Email",
+      "fullName": "Nombre Completo",
+      "save": "Guardar Perfil",
+      "title": "Perfil"
     },
     "security": {
       "badge": "Seguro",
@@ -445,12 +473,20 @@
       "pwSavedMsg": "Contraseña actualizada correctamente",
       "twoFaDesc": "Añade una capa extra de seguridad a tu cuenta con autenticación de dos factores.",
       "twoFaTitle": "Autenticación de Dos Factores",
-      "updatePwBtn": "Actualizar Contraseña"
+      "updatePwBtn": "Actualizar Contraseña",
+      "changePassword": "Cambiar Contraseña",
+      "confirmPassword": "Confirmar Contraseña",
+      "currentPassword": "Contraseña Actual",
+      "newPassword": "Nueva Contraseña",
+      "title": "Seguridad",
+      "twoFa": "Autenticación de Dos Factores",
+      "updatePassword": "Actualizar Contraseña"
     },
     "subtitle": "Gestiona tu cuenta, privacidad y preferencias de seguridad",
     "title": "Configuración",
     "heading": "Configuración",
-    "subheading": "Gestiona tu cuenta y preferencias"
+    "subheading": "Gestiona tu cuenta y preferencias",
+    "saved": "Cambios guardados"
   },
   "testimonials": {
     "eyebrow": "Confiado por usuarios",
@@ -476,11 +512,11 @@
     },
     "stat": {
       "totalSpentLabel": "Total Gastado",
-      "totalSpentTrend": "{value}% respecto al mes pasado",
+      "totalSpentTrend": "{value}% desde el mes pasado",
       "totalTxLabel": "Total de Gastos",
       "totalTxTrend": "{value} este mes"
     },
-    "subheading": "Registra y gestiona todos tus gastos en un solo lugar",
+    "subheading": "Realiza un seguimiento y gestiona todos tus gastos en un solo lugar",
     "table": {
       "actions": "Acciones",
       "amount": "Cantidad",
@@ -489,14 +525,18 @@
       "deleteLabel": "Eliminar",
       "description": "Descripción",
       "editLabel": "Editar",
-      "empty": "Sin gastos aún. Comienza a registrar añadiendo tu primer gasto."
+      "empty": "Sin gastos aún. Comienza a rastrear agregando tu primer gasto."
     }
   },
   "trust": {
     "item1": "Encriptación de seguridad a nivel bancario",
     "item2": "Tus datos son solo tuyos",
-    "item3": "Cumple con GDPR y enfocado en privacidad",
+    "item3": "Cumplimiento GDPR y enfoque en privacidad",
     "label": "Por qué confiar en nosotros"
+  },
+  "budget": {
+    "heading": "Planificador de Presupuesto",
+    "subheading": "Establece límites de gasto y rastrea el progreso en categorías."
   },
   "hero-panel": [
     "Automatic category breakdown — see exactly where your money goes with a real-time donut chart",

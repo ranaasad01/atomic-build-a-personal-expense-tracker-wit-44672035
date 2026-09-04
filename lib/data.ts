@@ -115,11 +115,10 @@ export function formatCurrency(amount: number, currency = "USD"): string {
   }).format(amount);
 }
 
-export function formatDate(dateStr: string): string {
-  const date = new Date(dateStr + "T00:00:00");
-  return date.toLocaleDateString("en-US", {
+export function formatDate(dateString: string): string {
+  return new Date(dateString).toLocaleDateString("en-US", {
+    year: "numeric",
     month: "short",
     day: "numeric",
-    year: "numeric",
   });
 }

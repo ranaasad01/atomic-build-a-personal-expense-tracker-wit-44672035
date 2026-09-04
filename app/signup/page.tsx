@@ -109,74 +109,73 @@ export default function SignUpPage() {
                 fill="none"
                 aria-hidden="true"
               >
-                <rect x="60" y="60" width="140" height="140" rx="24" stroke="white" strokeWidth="1.5" />
-                <rect x="90" y="90" width="80" height="80" rx="12" stroke="white" strokeWidth="1" />
-                <circle cx="130" cy="130" r="20" stroke="white" strokeWidth="1" />
+                <circle cx="130" cy="130" r="120" stroke="white" strokeWidth="1.5" strokeDasharray="6 6" />
+                <circle cx="130" cy="130" r="80" stroke="white" strokeWidth="1" strokeDasharray="4 8" />
               </svg>
             </div>
 
-            {/* Top: Brand */}
+            {/* Brand */}
             <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
-                  <TrendingUp className="h-5 w-5 text-white" />
+              <div className="flex items-center gap-2 mb-8">
+                <div className="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center">
+                  <span className="text-white font-bold text-base">S</span>
                 </div>
                 <div>
                   <span className="text-white font-bold text-xl leading-none block">SpendWise</span>
-                  <span className="text-white/60 text-xs leading-none">Personal Finance</span>
+                  <span className="text-white/60 text-[11px] leading-none">Personal Finance</span>
                 </div>
               </div>
 
-              <h2 className="text-white text-2xl font-bold leading-snug mb-2">
-                Take control of every dollar you spend.
+              <h2 className="text-white text-2xl md:text-3xl font-bold leading-snug mb-3 text-balance">
+                Start your journey to financial clarity.
               </h2>
               <p className="text-white/70 text-sm leading-relaxed mb-8">
-                Join thousands of people who track smarter and save more with SpendWise.
+                Join thousands of people who track smarter, spend wiser, and save more every month.
               </p>
 
-              {/* Feature bullets */}
-              <ul className="space-y-3">
+              {/* Feature list */}
+              <ul className="space-y-3 mb-10">
                 {FEATURES.map((feat) => (
                   <li key={feat} className="flex items-center gap-3">
-                    <CheckCircle className="h-4 w-4 text-white/80 shrink-0" />
-                    <span className="text-white/80 text-sm">{feat}</span>
+                    <CheckCircle className="h-4 w-4 text-[#6cf8bb] shrink-0" />
+                    <span className="text-white/90 text-sm">{feat}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Bottom: Testimonial */}
-            <div className="relative z-10 mt-10">
-              <div className="rounded-xl bg-white/10 border border-white/20 p-5 backdrop-blur-sm">
-                <p className="text-white/90 text-sm leading-relaxed italic mb-4">
-                  &ldquo;{TESTIMONIAL.quote}&rdquo;
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center shrink-0">
-                    <span className="text-white font-semibold text-xs">{TESTIMONIAL.initials}</span>
-                  </div>
-                  <div>
-                    <p className="text-white font-semibold text-sm leading-none">{TESTIMONIAL.name}</p>
-                    <p className="text-white/60 text-xs mt-0.5">{TESTIMONIAL.role}</p>
-                  </div>
+            {/* Testimonial */}
+            <div className="relative z-10 rounded-xl bg-white/10 border border-white/20 p-5 backdrop-blur-sm">
+              <div className="flex items-start gap-3">
+                <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                  <span className="text-white text-xs font-bold">{TESTIMONIAL.initials}</span>
+                </div>
+                <div>
+                  <p className="text-white/90 text-sm leading-relaxed italic mb-2">
+                    &ldquo;{TESTIMONIAL.quote}&rdquo;
+                  </p>
+                  <p className="text-white font-semibold text-xs">{TESTIMONIAL.name}</p>
+                  <p className="text-white/60 text-xs">{TESTIMONIAL.role}</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* RIGHT PANEL */}
-          <div className="flex flex-col justify-center bg-white p-8 md:p-10 md:w-[52%]">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-            >
+          {/* RIGHT PANEL — Sign Up Form */}
+          <div className="flex-1 bg-white p-8 md:p-10 flex flex-col justify-center">
+            <div className="max-w-sm mx-auto w-full">
               <div className="mb-8">
-                <h1 className="text-2xl font-bold text-[var(--color-on-surface)] tracking-tight">
+                <h1 className="text-2xl font-bold text-[var(--color-on-surface)] tracking-tight mb-1">
                   Create your account
                 </h1>
-                <p className="mt-1.5 text-sm text-[var(--color-on-surface-variant)]">
-                  Free to start. No credit card required.
+                <p className="text-sm text-[var(--color-on-surface-variant)]">
+                  Already have an account?{" "}
+                  <Link
+                    href="/auth"
+                    className="text-[var(--color-primary)] font-medium hover:underline"
+                  >
+                    Sign in
+                  </Link>
                 </p>
               </div>
 
@@ -196,7 +195,7 @@ export default function SignUpPage() {
                       name="name"
                       type="text"
                       autoComplete="name"
-                      placeholder="Jane Smith"
+                      placeholder="Alex Doe"
                       value={form.name}
                       onChange={handleChange}
                       className={cn(inputBase, "pl-9")}
@@ -219,7 +218,7 @@ export default function SignUpPage() {
                       name="email"
                       type="email"
                       autoComplete="email"
-                      placeholder="jane@example.com"
+                      placeholder="you@example.com"
                       value={form.email}
                       onChange={handleChange}
                       className={cn(inputBase, "pl-9")}
@@ -305,56 +304,37 @@ export default function SignUpPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className={cn(
-                    "w-full h-11 rounded-lg bg-[var(--color-primary)] text-white font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2 mt-2",
-                    loading
-                      ? "opacity-70 cursor-not-allowed"
-                      : "hover:bg-[var(--color-primary-container)] hover:shadow-[0_4px_16px_-4px_rgba(53,37,205,0.4)] active:scale-[0.98]"
-                  )}
+                  className="w-full h-11 rounded-lg bg-[var(--color-primary)] text-white text-sm font-semibold transition-all duration-200 hover:bg-[var(--color-primary-container)] hover:shadow-md disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
                 >
                   {loading ? (
                     <>
-                      <svg
-                        className="animate-spin h-4 w-4 text-white"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
+                      <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
                       </svg>
                       Creating account...
                     </>
                   ) : (
-                    "Create Account"
+                    <>
+                      <TrendingUp className="h-4 w-4" />
+                      Create Free Account
+                    </>
                   )}
                 </button>
+
+                <p className="text-center text-xs text-[var(--color-on-surface-variant)] mt-2">
+                  By creating an account, you agree to our{" "}
+                  <Link href="/terms" className="text-[var(--color-primary)] hover:underline">
+                    Terms of Service
+                  </Link>{" "}
+                  and{" "}
+                  <Link href="/privacy" className="text-[var(--color-primary)] hover:underline">
+                    Privacy Policy
+                  </Link>
+                  .
+                </p>
               </form>
-
-              {/* Sign in link */}
-              <p className="mt-6 text-center text-sm text-[var(--color-on-surface-variant)]">
-                Already have an account?{" "}
-                <Link
-                  href="/auth"
-                  className="font-semibold text-[var(--color-primary)] hover:underline transition-colors"
-                >
-                  Sign In
-                </Link>
-              </p>
-
-              {/* Privacy note */}
-              <p className="mt-4 text-center text-xs text-[var(--color-outline)]">
-                By creating an account you agree to our{" "}
-                <Link href="/terms" className="underline hover:text-[var(--color-primary)] transition-colors">
-                  Terms
-                </Link>{" "}
-                and{" "}
-                <Link href="/privacy" className="underline hover:text-[var(--color-primary)] transition-colors">
-                  Privacy Policy
-                </Link>.
-              </p>
-            </motion.div>
+            </div>
           </div>
         </div>
       </Reveal>
