@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import LocaleProvider from "@/components/LocaleProvider";
 import LanguageToggle from "@/components/LanguageToggle";
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body className="bg-[var(--color-background)] text-[var(--color-on-surface)] antialiased">
         <LocaleProvider>
           <LanguageToggle />
+          <Navbar />
           {children}
         </LocaleProvider>
       </body>
