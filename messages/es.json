@@ -1,0 +1,693 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "dashboard": "Panel de Control",
+    "transactions": "Transacciones",
+    "categories": "Categorías",
+    "reports": "Reportes",
+    "settings": "Configuración",
+    "signin": "Iniciar Sesión",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio"
+  },
+  "appBar": {
+    "searchPlaceholder": "Buscar transacciones...",
+    "privateSecure": "Privado y Seguro",
+    "notifications": "Ver notificaciones",
+    "userMenu": "Menú de usuario"
+  },
+  "sidebar": {
+    "profile": "Perfil"
+  },
+  "footer": {
+    "tagline": "Toma control de cada peso que gastas. Privado, seguro y diseñado para personas reales.",
+    "copyright": "© 2024 SpendWise. Todos los derechos reservados.",
+    "madeWith": "Construido con cuidado para tu bienestar financiero."
+  },
+  "home": {
+    "badge": "Privado y Seguro — Tus datos están encriptados",
+    "hero": {
+      "title": "Toma control de cada peso que gastas.",
+      "subtitle": "SpendWise te da una visión cristalina de tus finanzas — registra gastos por categoría, identifica patrones de gasto y mantente dentro del presupuesto cada mes.",
+      "cta": "Comenzar a Registrar Gratis",
+      "demo": "Ver Panel de Demostración"
+    },
+    "cta": {
+      "heading": "¿Listo para dejar de preguntarte dónde fue tu dinero?",
+      "body": "Únete a miles de personas que han tomado control de sus finanzas con SpendWise. Gratis para comenzar, sin tarjeta de crédito requerida.",
+      "button": "Crear Tu Cuenta Gratis"
+    },
+    "features": [
+      {
+        "title": "Automatic Category Breakdown",
+        "description": "See exactly where your money goes with a real-time donut chart that updates the moment you log a new expense.",
+        "icon": "pie"
+      },
+      {
+        "title": "Private by Design",
+        "description": "Your expense data is encrypted and visible only to you. No sharing, no selling, no exceptions.",
+        "icon": "lock"
+      },
+      {
+        "title": "Monthly Budget Tracking",
+        "description": "Set a monthly target and watch your progress update with every transaction. Get alerted before you overspend.",
+        "icon": "shield"
+      },
+      {
+        "title": "Spending Trends at a Glance",
+        "description": "Daily and weekly line charts reveal spending habits you never noticed, helping you make smarter decisions.",
+        "icon": "trending"
+      }
+    ],
+    "testimonials": [
+      {
+        "quote": "SpendWise completely changed how I think about my monthly budget. I spotted a $340 recurring software charge I'd forgotten about within the first week.",
+        "name": "Marcus Ellison",
+        "role": "Senior Product Manager at Finova"
+      },
+      {
+        "quote": "I tried three other expense trackers before this one. SpendWise is the only one I actually open every day — the category breakdown alone is worth it.",
+        "name": "Priya Nair",
+        "role": "Freelance UX Designer"
+      },
+      {
+        "quote": "Living on a tight stipend means every dollar counts. SpendWise helped me cut my food spending by 22% in just two months by showing me exactly where I was overspending.",
+        "name": "Daniel Okafor",
+        "role": "Graduate Student at NYU"
+      }
+    ],
+    "stats": [
+      {
+        "value": "50k+",
+        "label": "Active users"
+      },
+      {
+        "value": "$2M+",
+        "label": "Expenses tracked"
+      },
+      {
+        "value": "99.9%",
+        "label": "Uptime"
+      },
+      {
+        "value": "4.9★",
+        "label": "User rating"
+      }
+    ]
+  },
+  "addExpense": {
+    "actions": {
+      "cancel": "Cancelar",
+      "save": "Guardar Gasto",
+      "saving": "Guardando..."
+    },
+    "backLink": "Volver al Panel de Control",
+    "errors": {
+      "amountMax": "El monto no puede exceder $999,999.99",
+      "amountRequired": "El monto es requerido",
+      "categoryRequired": "Por favor selecciona una categoría",
+      "dateRequired": "La fecha es requerida"
+    },
+    "fields": {
+      "amount": "Monto",
+      "category": "Categoría",
+      "categoryPlaceholder": "Selecciona una categoría",
+      "date": "Fecha",
+      "description": "Descripción",
+      "descriptionPlaceholder": "¿En qué gastaste esto?",
+      "optional": "Opcional",
+      "receipt": "Recibo"
+    },
+    "heading": "Agregar Nuevo Gasto",
+    "secureLabel": "Tus datos están encriptados y son privados",
+    "success": {
+      "addAnother": "Agregar Otro",
+      "body": "Tu gasto ha sido registrado y agregado a tu total.",
+      "title": "¡Gasto guardado!",
+      "viewTransactions": "Ver Todos los Gastos"
+    },
+    "tips": {
+      "title": "💡 Consejo profesional: Agrega recibos para rastrear detalles de gastos"
+    },
+    "upload": {
+      "cta": "Subir Recibo",
+      "hint": "JPG, PNG o PDF (máx. 5MB)"
+    }
+  },
+  "auth": {
+    "demoButton": "Probar Demo",
+    "demoLabel": "¿Nuevo en el seguimiento de gastos?",
+    "emailLabel": "Correo Electrónico",
+    "emailPlaceholder": "tu@ejemplo.com",
+    "errorName": "El nombre es requerido",
+    "errorPassword": "La contraseña debe tener al menos 8 caracteres",
+    "errorRequired": "Este campo es requerido",
+    "errors": {
+      "confirmRequired": "Por favor confirma tu contraseña",
+      "emailInvalid": "Por favor ingresa un correo válido",
+      "emailRequired": "El correo es requerido",
+      "nameRequired": "El nombre completo es requerido",
+      "passwordLength": "La contraseña debe tener al menos 8 caracteres",
+      "passwordMismatch": "Las contraseñas no coinciden",
+      "passwordRequired": "La contraseña es requerida"
+    },
+    "fields": {
+      "confirmPassword": "Confirmar Contraseña",
+      "confirmPasswordPlaceholder": "Confirma tu contraseña",
+      "email": "Correo Electrónico",
+      "emailPlaceholder": "tu@ejemplo.com",
+      "fullName": "Nombre Completo",
+      "fullNamePlaceholder": "Juan Pérez",
+      "hidePassword": "Ocultar",
+      "password": "Contraseña",
+      "passwordPlaceholder": "Al menos 8 caracteres",
+      "showPassword": "Mostrar"
+    },
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "form": {
+      "demoButton": "Probar Demo",
+      "loading": "Autenticando...",
+      "securityNote": "Tus datos están encriptados y son privados."
+    },
+    "hasAccount": "¿Ya tienes una cuenta?",
+    "hidePassword": "Ocultar",
+    "illustrationLabel": "Seguimiento seguro de gastos",
+    "leftHeading": "Toma Control de Tus Gastos",
+    "leftSubheading": "Registra gastos, identifica patrones y desarrolla mejores hábitos financieros.",
+    "loading": "Cargando...",
+    "nameLabel": "Nombre Completo",
+    "namePlaceholder": "John Doe",
+    "noAccount": "¿No tienes cuenta?",
+    "panel": {
+      "headline": "Bienvenido de Vuelta",
+      "subheadline": "Inicia sesión en tu gestor de gastos"
+    },
+    "passwordLabel": "Contraseña",
+    "passwordPlaceholder": "••••••••",
+    "rememberMe": "Recuérdame",
+    "secureAccessLabel": "Acceso Seguro",
+    "showPassword": "Mostrar",
+    "signin": {
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "heading": "Iniciar Sesión",
+      "noAccount": "¿Eres nuevo?",
+      "rememberMe": "Mantenerme conectado",
+      "signUpLink": "Crear una cuenta",
+      "subheading": "Accede a tu panel de gastos",
+      "submitButton": "Iniciar Sesión",
+      "successMessage": "¡Bienvenido de vuelta! Redirigiendo..."
+    },
+    "signinButton": "Iniciar Sesión",
+    "signinHeading": "Inicia Sesión en Tu Cuenta",
+    "signinLink": "Inicia sesión en su lugar",
+    "signinSubheading": "Ingresa tus credenciales para continuar",
+    "signup": {
+      "hasAccount": "¿Ya tienes una cuenta?",
+      "heading": "Crea Tu Cuenta",
+      "privacyLink": "Política de Privacidad",
+      "signInLink": "Inicia sesión aquí",
+      "subheading": "Comienza a registrar gastos en segundos",
+      "submitButton": "Crear Cuenta",
+      "successMessage": "¡Cuenta creada! Iniciando sesión...",
+      "termsAnd": "y",
+      "termsLink": "Términos de Servicio",
+      "termsPrefix": "Acepto los"
+    },
+    "signupButton": "Registrarse",
+    "signupHeading": "Registrarse",
+    "signupLink": "Crear una cuenta",
+    "signupSubheading": "Únete a miles que rastrean de forma más inteligente",
+    "tabs": {
+      "signIn": "Iniciar sesión",
+      "signUp": "Registrarse"
+    }
+  },
+  "categories": {
+    "activeTracking": "Seguimiento activo",
+    "addButton": "Agregar categoría",
+    "breakdownSubtitle": "Ve a dónde va tu dinero",
+    "breakdownTitle": "Gastos por categoría",
+    "default": "Sin categorizar",
+    "delete": {
+      "cancel": "Cancelar",
+      "confirm": "Eliminar",
+      "message": "Esto eliminará la categoría y reasignará sus gastos a Sin categorizar.",
+      "title": "¿Eliminar categoría?"
+    },
+    "deleteAriaLabel": "Eliminar categoría",
+    "editAriaLabel": "Editar categoría",
+    "emptyMessage": "Comienza a organizar tus gastos creando tu primera categoría.",
+    "emptyTitle": "Sin categorías aún",
+    "heading": "Categorías",
+    "modal": {
+      "addTitle": "Agregar categoría",
+      "budgetLabel": "Presupuesto mensual",
+      "budgetPlaceholder": "Límite opcional",
+      "cancel": "Cancelar",
+      "close": "Cerrar",
+      "colorLabel": "Color",
+      "editTitle": "Editar categoría",
+      "iconLabel": "Icono",
+      "nameLabel": "Nombre de la categoría",
+      "namePlaceholder": "p. ej., Comestibles",
+      "nameRequired": "El nombre de la categoría es obligatorio",
+      "save": "Guardar"
+    },
+    "monthlyLimit": "Límite mensual",
+    "noBudget": "Sin presupuesto establecido",
+    "of": "De",
+    "searchPlaceholder": "Buscar categorías…",
+    "subheading": "Organiza y controla los límites de gastos",
+    "table": {
+      "budget": "Presupuesto",
+      "category": "Categoría",
+      "noBudget": "—",
+      "share": "Compartir",
+      "spent": "Gastado",
+      "transactions": "Transacciones"
+    },
+    "thisMonth": "Este mes",
+    "totalBudget": "Presupuesto Total",
+    "totalCategories": "Total de Categorías",
+    "totalSpent": "Total Gastado",
+    "transactions": "Transacciones",
+    "used": "Utilizado"
+  },
+  "cta": {
+    "button": "Comenzar a Rastrear",
+    "footnote": "No se requiere tarjeta de crédito. Gratis para siempre.",
+    "headline": "Toma Control de tu Gasto",
+    "subheadline": "Rastrea cada gasto, identifica patrones y alcanza tus objetivos financieros."
+  },
+  "dashboard": {
+    "addExpense": "Agregar Gasto",
+    "addExpenseSubtitle": "Registra una nueva transacción",
+    "categories": "Categorías",
+    "daysLeft": "días restantes",
+    "logTransaction": "Registrar Gasto",
+    "monthlySpending": "Gasto Mensual",
+    "ofBudget": "del presupuesto",
+    "privateBadge": "Privado",
+    "recentTransactions": "Transacciones Recientes",
+    "remainingBudget": "Presupuesto Restante",
+    "spent": "Gastado",
+    "title": "Panel de Control",
+    "totalBalance": "Saldo Total",
+    "viewAll": "Ver todo",
+    "viewAllTransactions": "Ver todas las transacciones",
+    "vsLastMonth": "vs. mes anterior"
+  },
+  "expenseForm": {
+    "amountLabel": "Cantidad",
+    "cancelButton": "Cancelar",
+    "categoryLabel": "Categoría",
+    "categoryPlaceholder": "Selecciona una categoría",
+    "dateLabel": "Fecha",
+    "descriptionLabel": "Descripción",
+    "descriptionPlaceholder": "Agrega notas sobre este gasto",
+    "errors": {
+      "amountRequired": "La cantidad es requerida",
+      "categoryRequired": "Por favor selecciona una categoría",
+      "dateRequired": "La fecha es requerida"
+    },
+    "optional": "Opcional",
+    "privateSubtitle": "Solo tú puedes ver este gasto",
+    "receiptLabel": "Recibo",
+    "removeFile": "Eliminar",
+    "saveButton": "Guardar Gasto",
+    "savingButton": "Guardando…",
+    "titleAdd": "Agregar Gasto",
+    "titleEdit": "Editar Gasto",
+    "uploadAriaLabel": "Cargar imagen de recibo",
+    "uploadCta": "Cargar recibo",
+    "uploadHint": "PNG, JPG hasta 5MB"
+  },
+  "features": {
+    "eyebrow": "Por qué elegirnos",
+    "headline": "Controla más inteligentemente, gasta menos",
+    "subheadline": "Herramientas poderosas para entender tus hábitos de gasto y tomar control de tus finanzas."
+  },
+  "hero": {
+    "badge": "Finanzas Personales Simplificadas",
+    "cta_primary": "Comenzar a Rastrear Gratis",
+    "cta_secondary": "Ver Demo",
+    "headline": "Tu dinero, tus reglas",
+    "preview_label": "Vista previa del panel",
+    "preview_sub": "Seguimiento de gastos en tiempo real de un vistazo",
+    "subheadline": "Rastrea cada gasto, visualiza tu gasto y desarrolla mejores hábitos financieros."
+  },
+  "howItWorks": {
+    "eyebrow": "Primeros pasos",
+    "headline": "Tres pasos hacia la claridad financiera",
+    "subheadline": "Configura tu cuenta y comienza a rastrear en minutos."
+  },
+  "reports": {
+    "categorySplit": "Desglose por Categoría",
+    "daily": "Gasto Diario",
+    "heading": "Reportes",
+    "monthlySummary": "Resumen Mensual",
+    "onTrack": "En camino",
+    "spendingTrends": "Tendencias de Gasto",
+    "stat": {
+      "avgDailySpend": "Gasto Diario Promedio",
+      "budgetAdherence": "Cumplimiento de Presupuesto",
+      "highestCategory": "Categoría Principal"
+    },
+    "subheading": "Rastrea tus patrones de gasto e información",
+    "table": {
+      "income": "Ingresos",
+      "month": "Mes",
+      "netSavings": "Ahorros Netos",
+      "totalSpend": "Gasto Total"
+    },
+    "viewAllMonths": "Ver Todos los Meses",
+    "vsLastMonth": "vs. Mes Anterior",
+    "weekly": "Desglose Semanal"
+  },
+  "settings": {
+    "data": {
+      "deleteBtn": "Eliminar Todos los Datos",
+      "deleteDesc": "Elimina permanentemente todos tus gastos y datos de cuenta. Esto no se puede deshacer.",
+      "deleteTitle": "Eliminar Cuenta",
+      "exportBtn": "Exportar como CSV",
+      "exportDesc": "Descarga todos tus gastos en formato CSV para copia de seguridad o análisis.",
+      "exportTitle": "Exportar Datos",
+      "heading": "Datos y Privacidad",
+      "privacyDesc": "Tus gastos están encriptados y solo son visibles para ti.",
+      "privacyTitle": "Privacidad"
+    },
+    "deleteModal": {
+      "body": "Todos tus datos se eliminarán permanentemente. No puedes recuperar esta cuenta.",
+      "cancelBtn": "Cancelar",
+      "confirmBtn": "Eliminar",
+      "confirmLabel": "Escribe DELETE para confirmar",
+      "title": "¿Eliminar Cuenta?"
+    },
+    "preferences": {
+      "budgetHint": "Establece un límite de gasto mensual",
+      "budgetLabel": "Presupuesto Mensual",
+      "currencyLabel": "Moneda",
+      "emailNotifLabel": "Notificaciones por Correo",
+      "heading": "Preferencias",
+      "notifHeading": "Notificaciones",
+      "pushNotifLabel": "Notificaciones Push",
+      "saveBtn": "Guardar Cambios",
+      "savedMsg": "Preferencias guardadas",
+      "themeLabel": "Tema"
+    },
+    "profile": {
+      "avatarHint": "JPG o PNG, máximo 2MB",
+      "avatarLabel": "Foto de Perfil",
+      "changePhoto": "Cambiar Foto",
+      "emailLabel": "Correo Electrónico",
+      "fullNameLabel": "Nombre Completo",
+      "heading": "Perfil",
+      "saveBtn": "Guardar Perfil",
+      "savedMsg": "Perfil actualizado"
+    },
+    "security": {
+      "badge": "Seguro",
+      "changePwDesc": "Actualiza tu contraseña regularmente para mantener tu cuenta segura.",
+      "changePwTitle": "Cambiar Contraseña",
+      "confirmPwLabel": "Confirmar Contraseña",
+      "currentPwLabel": "Contraseña Actual",
+      "heading": "Seguridad",
+      "newPwLabel": "Nueva Contraseña",
+      "pwSavedMsg": "Contraseña actualizada correctamente",
+      "twoFaDesc": "Añade una capa extra de seguridad a tu cuenta con autenticación de dos factores.",
+      "twoFaTitle": "Autenticación de Dos Factores",
+      "updatePwBtn": "Actualizar Contraseña"
+    },
+    "subtitle": "Gestiona tu cuenta, privacidad y preferencias de seguridad",
+    "title": "Configuración"
+  },
+  "testimonials": {
+    "eyebrow": "Confiado por usuarios",
+    "headline": "Mira lo que otros dicen"
+  },
+  "transactions": {
+    "addBtn": "Agregar Gasto",
+    "dialog": {
+      "body": "Ingresa los detalles del gasto a continuación para rastrear tu gasto.",
+      "cancel": "Cancelar",
+      "confirm": "Guardar Gasto",
+      "title": "Nuevo Gasto"
+    },
+    "filter": {
+      "filterBtn": "Filtrar",
+      "sortBy": "Ordenar por"
+    },
+    "heading": "Gastos",
+    "pagination": {
+      "next": "Siguiente",
+      "prev": "Anterior",
+      "showing": "Mostrando {start}–{end} de {total}"
+    },
+    "stat": {
+      "totalSpentLabel": "Total Gastado",
+      "totalSpentTrend": "{value}% desde el mes pasado",
+      "totalTxLabel": "Total de Gastos",
+      "totalTxTrend": "{value} este mes"
+    },
+    "subheading": "Rastrear y gestionar todos tus gastos en un solo lugar",
+    "table": {
+      "actions": "Acciones",
+      "amount": "Cantidad",
+      "category": "Categoría",
+      "date": "Fecha",
+      "deleteLabel": "Eliminar",
+      "description": "Descripción",
+      "editLabel": "Editar",
+      "empty": "Sin gastos aún. Comienza a rastrear agregando tu primer gasto."
+    }
+  },
+  "trust": {
+    "item1": "Encriptación de seguridad a nivel bancario",
+    "item2": "Tus datos son solo tuyos",
+    "item3": "Cumplimiento GDPR y enfoque en privacidad",
+    "label": "¿Por qué confiar en nosotros?"
+  },
+  "hero-panel": [
+    "Automatic category breakdown — see exactly where your money goes with a real-time donut chart",
+    "Private by design — your expense data is encrypted and visible only to you",
+    "Monthly budget tracking — set a target and watch your progress update with every transaction",
+    "Spending trends at a glance — daily and weekly line charts reveal habits you never noticed"
+  ],
+  "login-form": [
+    "Email address",
+    "Password",
+    "Forgot your password? Reset it here",
+    "Don't have an account? Create one free"
+  ],
+  "testimonial": [
+    {
+      "name": "Marcus Ellison",
+      "role": "Senior Product Manager at Finova",
+      "quote": "SpendWise completely changed how I think about my monthly budget. I spotted a $340 recurring software charge I'd forgotten about within the first week."
+    },
+    {
+      "name": "Priya Nair",
+      "role": "Freelance UX Designer",
+      "quote": "I tried three other expense trackers before this one. SpendWise is the only one I actually open every day — the category breakdown alone is worth it."
+    },
+    {
+      "name": "Daniel Okafor",
+      "role": "Graduate Student at NYU",
+      "quote": "Living on a tight stipend means every dollar counts. SpendWise helped me cut my food spending by 22% in just two months by showing me exactly where I was overspending."
+    }
+  ],
+  "header": [
+    "Dashboard",
+    "Search transactions...",
+    "Notification bell with unread count badge",
+    "Private & Secure — your data is encrypted and never shared",
+    "AL"
+  ],
+  "stat-cards": [
+    {
+      "label": "Total Balance",
+      "value": "$12,480.00",
+      "trend": "4.2% vs last month",
+      "icon": "wallet"
+    },
+    {
+      "label": "Monthly Spending",
+      "value": "$3,240.75",
+      "trend": "8.1% vs last month",
+      "icon": "trending_up"
+    },
+    {
+      "label": "Remaining Budget",
+      "value": "$1,759.25",
+      "trend": "35% of $5,000 budget left",
+      "icon": "shield"
+    },
+    {
+      "label": "Total Transactions",
+      "value": "47",
+      "trend": "3 fewer than last month",
+      "icon": "receipt"
+    }
+  ],
+  "add-expense-cta": [
+    "Log a New Expense",
+    "Receipts can be attached — snap a photo or upload a file",
+    "/expenses/new"
+  ],
+  "category-breakdown": [
+    {
+      "name": "Housing",
+      "amount": "$1,200.00",
+      "percent": "37%",
+      "color": "#4f46e5"
+    },
+    {
+      "name": "Food & Drink",
+      "amount": "$680.50",
+      "percent": "21%",
+      "color": "#f59e0b"
+    },
+    {
+      "name": "Transport",
+      "amount": "$420.00",
+      "percent": "13%",
+      "color": "#10b981"
+    },
+    {
+      "name": "Groceries",
+      "amount": "$390.25",
+      "percent": "12%",
+      "color": "#6366f1"
+    },
+    {
+      "name": "Software & Subscriptions",
+      "amount": "$310.00",
+      "percent": "10%",
+      "color": "#3730a3"
+    },
+    {
+      "name": "Other",
+      "amount": "$240.00",
+      "percent": "7%",
+      "color": "#94a3b8"
+    },
+    "$3,240.75 total spent",
+    "Legend displayed below chart with color swatch, category name, and amount"
+  ],
+  "recent-transactions": [
+    {
+      "merchant": "Spotify Premium",
+      "category": "Software & Subscriptions",
+      "date": "Dec 18, 2024",
+      "amount": "-$14.99",
+      "badge": "purple"
+    },
+    {
+      "merchant": "Whole Foods Market",
+      "category": "Groceries",
+      "date": "Dec 17, 2024",
+      "amount": "-$87.40",
+      "badge": "green"
+    },
+    {
+      "merchant": "Uber",
+      "category": "Transport",
+      "date": "Dec 16, 2024",
+      "amount": "-$22.50",
+      "badge": "teal"
+    },
+    {
+      "merchant": "Chipotle",
+      "category": "Food & Drink",
+      "date": "Dec 15, 2024",
+      "amount": "-$13.75",
+      "badge": "amber"
+    },
+    {
+      "merchant": "December Rent",
+      "category": "Housing",
+      "date": "Dec 1, 2024",
+      "amount": "-$1,200.00",
+      "badge": "indigo"
+    },
+    "Each row shows merchant icon, description, category badge, date, red amount, and edit/delete action icons",
+    "View All Transactions link routes to /transactions"
+  ],
+  "filters-and-sort": [
+    "Category — All Categories / Housing / Food & Drink / Transport / Groceries / Software / Travel / Healthcare / Other",
+    "Date Range — pick a start and end date to scope your view to any custom period",
+    "Sort by — Newest first / Oldest first / Highest amount / Lowest amount",
+    "Search — type a merchant name or keyword to filter results instantly",
+    "Reset Filters — clear all active filters and return to the full transaction list"
+  ],
+  "summary-stats": [
+    {
+      "label": "Total Spent This Month",
+      "description": "Sum of all expenses logged in the current calendar month"
+    },
+    {
+      "label": "Total Transactions",
+      "description": "Count of individual expense entries recorded this month"
+    },
+    {
+      "label": "Largest Single Expense",
+      "description": "The highest-value transaction logged this month"
+    },
+    {
+      "label": "Average Transaction Value",
+      "description": "Total monthly spend divided by transaction count"
+    }
+  ],
+  "transactions-table": [
+    "Date — formatted as MMM DD, YYYY, sortable ascending or descending",
+    "Description — merchant name or short note entered when the expense was logged",
+    "Category — color-coded badge indicating the expense type",
+    "Amount — expense value in your default currency, displayed in red",
+    "Actions — inline Edit and Delete buttons per row",
+    "Row hover state — subtle indigo-tinted background highlight",
+    "Empty state — No transactions found. Try adjusting your filters or log your first expense."
+  ],
+  "pagination": [
+    "Previous — navigate to the prior page of results",
+    "Page numbers — direct jump links showing up to 5 page numbers",
+    "Next — navigate to the following page of results",
+    "Rows per page — selector to display 10, 15, 25, or 50 transactions per page",
+    "Result count label — Showing 1–15 of 47 transactions"
+  ],
+  "form-header": [
+    "Editing an existing expense? All fields are pre-filled — just update what changed and hit Save.",
+    "Required fields are marked with an asterisk (*). Receipt upload is optional but recommended for accurate records."
+  ],
+  "expense-form": [
+    {
+      "label": "Amount *",
+      "hint": "Enter the exact amount spent (e.g. 42.50). Supports up to two decimal places in your selected currency."
+    },
+    {
+      "label": "Category *",
+      "hint": "Choose from Housing, Food & Drink, Transport, Groceries, Software, Travel, Health, or Entertainment."
+    },
+    {
+      "label": "Date *",
+      "hint": "Pick the date the expense occurred. Defaults to today."
+    },
+    {
+      "label": "Description",
+      "hint": "Add a short note about this expense. Appears in your Transactions list and search results."
+    },
+    {
+      "label": "Receipt",
+      "hint": "Upload a photo or PDF of your receipt (JPG, PNG, or PDF up to 5 MB)."
+    },
+    {
+      "label": "Currency",
+      "hint": "Inherits your default currency from Settings. Override per-transaction if needed."
+    }
+  ],
+  "actions": [
+    "Save Expense — Confirms and stores the transaction to your account.",
+    "Cancel — Discards all changes and returns you to the previous page without saving.",
+    "Save & Add Another — Saves this expense and clears the form so you can log the next transaction.",
+    "Delete Expense — Available in edit mode only. Permanently removes this transaction after a confirmation prompt."
+  ]
+}

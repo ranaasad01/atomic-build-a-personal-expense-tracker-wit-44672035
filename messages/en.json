@@ -1,0 +1,693 @@
+{
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "transactions": "Transactions",
+    "categories": "Categories",
+    "reports": "Reports",
+    "settings": "Settings",
+    "signin": "Sign In",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "appBar": {
+    "searchPlaceholder": "Search transactions...",
+    "privateSecure": "Private & Secure",
+    "notifications": "View notifications",
+    "userMenu": "User menu"
+  },
+  "sidebar": {
+    "profile": "Profile"
+  },
+  "footer": {
+    "tagline": "Take control of every dollar you spend. Private, secure, and built for real people.",
+    "copyright": "© 2024 SpendWise. All rights reserved.",
+    "madeWith": "Built with care for your financial wellbeing."
+  },
+  "home": {
+    "badge": "Private & Secure — Your data is encrypted",
+    "hero": {
+      "title": "Take control of every dollar you spend.",
+      "subtitle": "SpendWise gives you a crystal-clear picture of your finances — track expenses by category, spot spending patterns, and stay on budget every month.",
+      "cta": "Start Tracking Free",
+      "demo": "View Demo Dashboard"
+    },
+    "features": [
+      {
+        "title": "Automatic Category Breakdown",
+        "description": "See exactly where your money goes with a real-time donut chart that updates the moment you log a new expense.",
+        "icon": "pie"
+      },
+      {
+        "title": "Private by Design",
+        "description": "Your expense data is encrypted and visible only to you. No sharing, no selling, no exceptions.",
+        "icon": "lock"
+      },
+      {
+        "title": "Monthly Budget Tracking",
+        "description": "Set a monthly target and watch your progress update with every transaction. Get alerted before you overspend.",
+        "icon": "shield"
+      },
+      {
+        "title": "Spending Trends at a Glance",
+        "description": "Daily and weekly line charts reveal spending habits you never noticed, helping you make smarter decisions.",
+        "icon": "trending"
+      }
+    ],
+    "testimonials": [
+      {
+        "quote": "SpendWise completely changed how I think about my monthly budget. I spotted a $340 recurring software charge I'd forgotten about within the first week.",
+        "name": "Marcus Ellison",
+        "role": "Senior Product Manager at Finova"
+      },
+      {
+        "quote": "I tried three other expense trackers before this one. SpendWise is the only one I actually open every day — the category breakdown alone is worth it.",
+        "name": "Priya Nair",
+        "role": "Freelance UX Designer"
+      },
+      {
+        "quote": "Living on a tight stipend means every dollar counts. SpendWise helped me cut my food spending by 22% in just two months by showing me exactly where I was overspending.",
+        "name": "Daniel Okafor",
+        "role": "Graduate Student at NYU"
+      }
+    ],
+    "stats": [
+      {
+        "value": "50k+",
+        "label": "Active users"
+      },
+      {
+        "value": "$2M+",
+        "label": "Expenses tracked"
+      },
+      {
+        "value": "99.9%",
+        "label": "Uptime"
+      },
+      {
+        "value": "4.9★",
+        "label": "User rating"
+      }
+    ],
+    "cta": {
+      "heading": "Ready to stop wondering where your money went?",
+      "body": "Join thousands of people who've taken control of their finances with SpendWise. Free to start, no credit card required.",
+      "button": "Create Your Free Account"
+    }
+  },
+  "hero-panel": [
+    "Automatic category breakdown — see exactly where your money goes with a real-time donut chart",
+    "Private by design — your expense data is encrypted and visible only to you",
+    "Monthly budget tracking — set a target and watch your progress update with every transaction",
+    "Spending trends at a glance — daily and weekly line charts reveal habits you never noticed"
+  ],
+  "login-form": [
+    "Email address",
+    "Password",
+    "Forgot your password? Reset it here",
+    "Don't have an account? Create one free"
+  ],
+  "testimonial": [
+    {
+      "name": "Marcus Ellison",
+      "role": "Senior Product Manager at Finova",
+      "quote": "SpendWise completely changed how I think about my monthly budget. I spotted a $340 recurring software charge I'd forgotten about within the first week."
+    },
+    {
+      "name": "Priya Nair",
+      "role": "Freelance UX Designer",
+      "quote": "I tried three other expense trackers before this one. SpendWise is the only one I actually open every day — the category breakdown alone is worth it."
+    },
+    {
+      "name": "Daniel Okafor",
+      "role": "Graduate Student at NYU",
+      "quote": "Living on a tight stipend means every dollar counts. SpendWise helped me cut my food spending by 22% in just two months by showing me exactly where I was overspending."
+    }
+  ],
+  "header": [
+    "Dashboard",
+    "Search transactions...",
+    "Notification bell with unread count badge",
+    "Private & Secure — your data is encrypted and never shared",
+    "AL"
+  ],
+  "stat-cards": [
+    {
+      "label": "Total Balance",
+      "value": "$12,480.00",
+      "trend": "4.2% vs last month",
+      "icon": "wallet"
+    },
+    {
+      "label": "Monthly Spending",
+      "value": "$3,240.75",
+      "trend": "8.1% vs last month",
+      "icon": "trending_up"
+    },
+    {
+      "label": "Remaining Budget",
+      "value": "$1,759.25",
+      "trend": "35% of $5,000 budget left",
+      "icon": "shield"
+    },
+    {
+      "label": "Total Transactions",
+      "value": "47",
+      "trend": "3 fewer than last month",
+      "icon": "receipt"
+    }
+  ],
+  "add-expense-cta": [
+    "Log a New Expense",
+    "Receipts can be attached — snap a photo or upload a file",
+    "/expenses/new"
+  ],
+  "category-breakdown": [
+    {
+      "name": "Housing",
+      "amount": "$1,200.00",
+      "percent": "37%",
+      "color": "#4f46e5"
+    },
+    {
+      "name": "Food & Drink",
+      "amount": "$680.50",
+      "percent": "21%",
+      "color": "#f59e0b"
+    },
+    {
+      "name": "Transport",
+      "amount": "$420.00",
+      "percent": "13%",
+      "color": "#10b981"
+    },
+    {
+      "name": "Groceries",
+      "amount": "$390.25",
+      "percent": "12%",
+      "color": "#6366f1"
+    },
+    {
+      "name": "Software & Subscriptions",
+      "amount": "$310.00",
+      "percent": "10%",
+      "color": "#3730a3"
+    },
+    {
+      "name": "Other",
+      "amount": "$240.00",
+      "percent": "7%",
+      "color": "#94a3b8"
+    },
+    "$3,240.75 total spent",
+    "Legend displayed below chart with color swatch, category name, and amount"
+  ],
+  "recent-transactions": [
+    {
+      "merchant": "Spotify Premium",
+      "category": "Software & Subscriptions",
+      "date": "Dec 18, 2024",
+      "amount": "-$14.99",
+      "badge": "purple"
+    },
+    {
+      "merchant": "Whole Foods Market",
+      "category": "Groceries",
+      "date": "Dec 17, 2024",
+      "amount": "-$87.40",
+      "badge": "green"
+    },
+    {
+      "merchant": "Uber",
+      "category": "Transport",
+      "date": "Dec 16, 2024",
+      "amount": "-$22.50",
+      "badge": "teal"
+    },
+    {
+      "merchant": "Chipotle",
+      "category": "Food & Drink",
+      "date": "Dec 15, 2024",
+      "amount": "-$13.75",
+      "badge": "amber"
+    },
+    {
+      "merchant": "December Rent",
+      "category": "Housing",
+      "date": "Dec 1, 2024",
+      "amount": "-$1,200.00",
+      "badge": "indigo"
+    },
+    "Each row shows merchant icon, description, category badge, date, red amount, and edit/delete action icons",
+    "View All Transactions link routes to /transactions"
+  ],
+  "filters-and-sort": [
+    "Category — All Categories / Housing / Food & Drink / Transport / Groceries / Software / Travel / Healthcare / Other",
+    "Date Range — pick a start and end date to scope your view to any custom period",
+    "Sort by — Newest first / Oldest first / Highest amount / Lowest amount",
+    "Search — type a merchant name or keyword to filter results instantly",
+    "Reset Filters — clear all active filters and return to the full transaction list"
+  ],
+  "summary-stats": [
+    {
+      "label": "Total Spent This Month",
+      "description": "Sum of all expenses logged in the current calendar month"
+    },
+    {
+      "label": "Total Transactions",
+      "description": "Count of individual expense entries recorded this month"
+    },
+    {
+      "label": "Largest Single Expense",
+      "description": "The highest-value transaction logged this month"
+    },
+    {
+      "label": "Average Transaction Value",
+      "description": "Total monthly spend divided by transaction count"
+    }
+  ],
+  "transactions-table": [
+    "Date — formatted as MMM DD, YYYY, sortable ascending or descending",
+    "Description — merchant name or short note entered when the expense was logged",
+    "Category — color-coded badge indicating the expense type",
+    "Amount — expense value in your default currency, displayed in red",
+    "Actions — inline Edit and Delete buttons per row",
+    "Row hover state — subtle indigo-tinted background highlight",
+    "Empty state — No transactions found. Try adjusting your filters or log your first expense."
+  ],
+  "pagination": [
+    "Previous — navigate to the prior page of results",
+    "Page numbers — direct jump links showing up to 5 page numbers",
+    "Next — navigate to the following page of results",
+    "Rows per page — selector to display 10, 15, 25, or 50 transactions per page",
+    "Result count label — Showing 1–15 of 47 transactions"
+  ],
+  "form-header": [
+    "Editing an existing expense? All fields are pre-filled — just update what changed and hit Save.",
+    "Required fields are marked with an asterisk (*). Receipt upload is optional but recommended for accurate records."
+  ],
+  "expense-form": [
+    {
+      "label": "Amount *",
+      "hint": "Enter the exact amount spent (e.g. 42.50). Supports up to two decimal places in your selected currency."
+    },
+    {
+      "label": "Category *",
+      "hint": "Choose from Housing, Food & Drink, Transport, Groceries, Software, Travel, Health, or Entertainment."
+    },
+    {
+      "label": "Date *",
+      "hint": "Pick the date the expense occurred. Defaults to today."
+    },
+    {
+      "label": "Description",
+      "hint": "Add a short note about this expense. Appears in your Transactions list and search results."
+    },
+    {
+      "label": "Receipt",
+      "hint": "Upload a photo or PDF of your receipt (JPG, PNG, or PDF up to 5 MB)."
+    },
+    {
+      "label": "Currency",
+      "hint": "Inherits your default currency from Settings. Override per-transaction if needed."
+    }
+  ],
+  "actions": [
+    "Save Expense — Confirms and stores the transaction to your account.",
+    "Cancel — Discards all changes and returns you to the previous page without saving.",
+    "Save & Add Another — Saves this expense and clears the form so you can log the next transaction.",
+    "Delete Expense — Available in edit mode only. Permanently removes this transaction after a confirmation prompt."
+  ],
+  "addExpense": {
+    "actions": {
+      "cancel": "Cancel",
+      "save": "Save Expense",
+      "saving": "Saving..."
+    },
+    "backLink": "Back to Dashboard",
+    "errors": {
+      "amountMax": "Amount cannot exceed $999,999.99",
+      "amountRequired": "Amount is required",
+      "categoryRequired": "Please select a category",
+      "dateRequired": "Date is required"
+    },
+    "fields": {
+      "amount": "Amount",
+      "category": "Category",
+      "categoryPlaceholder": "Select a category",
+      "date": "Date",
+      "description": "Description",
+      "descriptionPlaceholder": "What did you spend this on?",
+      "optional": "Optional",
+      "receipt": "Receipt"
+    },
+    "heading": "Add New Expense",
+    "secureLabel": "Your data is encrypted and private",
+    "success": {
+      "addAnother": "Add Another",
+      "body": "Your expense has been recorded and added to your total.",
+      "title": "Expense saved!",
+      "viewTransactions": "View All Expenses"
+    },
+    "tips": {
+      "title": "💡 Pro tip: Add receipts to track spending details"
+    },
+    "upload": {
+      "cta": "Upload Receipt",
+      "hint": "JPG, PNG, or PDF (max 5MB)"
+    }
+  },
+  "auth": {
+    "demoButton": "Try Demo",
+    "demoLabel": "New to expense tracking?",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "errorName": "Name is required",
+    "errorPassword": "Password must be at least 8 characters",
+    "errorRequired": "This field is required",
+    "errors": {
+      "confirmRequired": "Please confirm your password",
+      "emailInvalid": "Please enter a valid email",
+      "emailRequired": "Email is required",
+      "nameRequired": "Full name is required",
+      "passwordLength": "Password must be at least 8 characters",
+      "passwordMismatch": "Passwords don't match",
+      "passwordRequired": "Password is required"
+    },
+    "fields": {
+      "confirmPassword": "Confirm Password",
+      "confirmPasswordPlaceholder": "Confirm your password",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "John Doe",
+      "hidePassword": "Hide",
+      "password": "Password",
+      "passwordPlaceholder": "At least 8 characters",
+      "showPassword": "Show"
+    },
+    "forgotPassword": "Forgot password?",
+    "form": {
+      "demoButton": "Try Demo",
+      "loading": "Authenticating...",
+      "securityNote": "Your data is encrypted and private."
+    },
+    "hasAccount": "Already have an account?",
+    "hidePassword": "Hide",
+    "illustrationLabel": "Secure expense tracking",
+    "leftHeading": "Take Control of Your Spending",
+    "leftSubheading": "Track expenses, spot patterns, and build better financial habits.",
+    "loading": "Loading...",
+    "nameLabel": "Full Name",
+    "namePlaceholder": "John Doe",
+    "noAccount": "Don't have an account?",
+    "panel": {
+      "headline": "Welcome Back",
+      "subheadline": "Sign in to your expense tracker"
+    },
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "••••••••",
+    "rememberMe": "Remember me",
+    "secureAccessLabel": "Secure Access",
+    "showPassword": "Show",
+    "signin": {
+      "forgotPassword": "Forgot password?",
+      "heading": "Sign In",
+      "noAccount": "New here?",
+      "rememberMe": "Keep me signed in",
+      "signUpLink": "Create an account",
+      "subheading": "Access your expense dashboard",
+      "submitButton": "Sign In",
+      "successMessage": "Welcome back! Redirecting..."
+    },
+    "signinButton": "Sign In",
+    "signinHeading": "Sign In to Your Account",
+    "signinLink": "Sign in instead",
+    "signinSubheading": "Enter your credentials to continue",
+    "signup": {
+      "hasAccount": "Already have an account?",
+      "heading": "Create Your Account",
+      "privacyLink": "Privacy Policy",
+      "signInLink": "Sign in here",
+      "subheading": "Start tracking expenses in seconds",
+      "submitButton": "Create Account",
+      "successMessage": "Account created! Signing you in...",
+      "termsAnd": "and",
+      "termsLink": "Terms of Service",
+      "termsPrefix": "I agree to the"
+    },
+    "signupButton": "Sign Up",
+    "signupHeading": "Sign Up",
+    "signupLink": "Create an account",
+    "signupSubheading": "Join thousands tracking smarter",
+    "tabs": {
+      "signIn": "Sign In",
+      "signUp": "Sign Up"
+    }
+  },
+  "categories": {
+    "activeTracking": "Active tracking",
+    "addButton": "Add Category",
+    "breakdownSubtitle": "See where your money goes",
+    "breakdownTitle": "Spending by Category",
+    "default": "Uncategorized",
+    "delete": {
+      "cancel": "Cancel",
+      "confirm": "Delete",
+      "message": "This will remove the category and reassign its expenses to Uncategorized.",
+      "title": "Delete Category?"
+    },
+    "deleteAriaLabel": "Delete category",
+    "editAriaLabel": "Edit category",
+    "emptyMessage": "Start organizing your spending by creating your first category.",
+    "emptyTitle": "No Categories Yet",
+    "heading": "Categories",
+    "modal": {
+      "addTitle": "Add Category",
+      "budgetLabel": "Monthly Budget",
+      "budgetPlaceholder": "Optional limit",
+      "cancel": "Cancel",
+      "close": "Close",
+      "colorLabel": "Color",
+      "editTitle": "Edit Category",
+      "iconLabel": "Icon",
+      "nameLabel": "Category Name",
+      "namePlaceholder": "e.g., Groceries",
+      "nameRequired": "Category name is required",
+      "save": "Save"
+    },
+    "monthlyLimit": "Monthly Limit",
+    "noBudget": "No budget set",
+    "of": "Of",
+    "searchPlaceholder": "Search categories…",
+    "subheading": "Organize and track spending limits",
+    "table": {
+      "budget": "Budget",
+      "category": "Category",
+      "noBudget": "—",
+      "share": "Share",
+      "spent": "Spent",
+      "transactions": "Transactions"
+    },
+    "thisMonth": "This Month",
+    "totalBudget": "Total Budget",
+    "totalCategories": "Total Categories",
+    "totalSpent": "Total Spent",
+    "transactions": "Transactions",
+    "used": "Used"
+  },
+  "cta": {
+    "button": "Start Tracking",
+    "footnote": "No credit card required. Free forever.",
+    "headline": "Take Control of Your Spending",
+    "subheadline": "Track every expense, spot patterns, and reach your financial goals."
+  },
+  "dashboard": {
+    "addExpense": "Add Expense",
+    "addExpenseSubtitle": "Log a new transaction",
+    "categories": "Categories",
+    "daysLeft": "days left",
+    "logTransaction": "Log Expense",
+    "monthlySpending": "Monthly Spending",
+    "ofBudget": "of budget",
+    "privateBadge": "Private",
+    "recentTransactions": "Recent Transactions",
+    "remainingBudget": "Remaining Budget",
+    "spent": "Spent",
+    "title": "Dashboard",
+    "totalBalance": "Total Balance",
+    "viewAll": "View all",
+    "viewAllTransactions": "View all transactions",
+    "vsLastMonth": "vs. last month"
+  },
+  "expenseForm": {
+    "amountLabel": "Amount",
+    "cancelButton": "Cancel",
+    "categoryLabel": "Category",
+    "categoryPlaceholder": "Select a category",
+    "dateLabel": "Date",
+    "descriptionLabel": "Description",
+    "descriptionPlaceholder": "Add notes about this expense",
+    "errors": {
+      "amountRequired": "Amount is required",
+      "categoryRequired": "Please select a category",
+      "dateRequired": "Date is required"
+    },
+    "optional": "Optional",
+    "privateSubtitle": "Only you can see this expense",
+    "receiptLabel": "Receipt",
+    "removeFile": "Remove",
+    "saveButton": "Save Expense",
+    "savingButton": "Saving…",
+    "titleAdd": "Add Expense",
+    "titleEdit": "Edit Expense",
+    "uploadAriaLabel": "Upload receipt image",
+    "uploadCta": "Upload receipt",
+    "uploadHint": "PNG, JPG up to 5MB"
+  },
+  "features": {
+    "eyebrow": "Why choose us",
+    "headline": "Track smarter, spend less",
+    "subheadline": "Powerful tools to understand your spending habits and take control of your finances."
+  },
+  "hero": {
+    "badge": "Personal Finance Made Simple",
+    "cta_primary": "Start Tracking Free",
+    "cta_secondary": "See Demo",
+    "headline": "Your money, your rules",
+    "preview_label": "Dashboard preview",
+    "preview_sub": "Real-time expense tracking at a glance",
+    "subheadline": "Track every expense, visualize your spending, and build better financial habits."
+  },
+  "howItWorks": {
+    "eyebrow": "Getting started",
+    "headline": "Three steps to financial clarity",
+    "subheadline": "Set up your account and start tracking in minutes."
+  },
+  "reports": {
+    "categorySplit": "Category Breakdown",
+    "daily": "Daily Spending",
+    "heading": "Reports",
+    "monthlySummary": "Monthly Summary",
+    "onTrack": "On track",
+    "spendingTrends": "Spending Trends",
+    "stat": {
+      "avgDailySpend": "Avg. Daily Spend",
+      "budgetAdherence": "Budget Adherence",
+      "highestCategory": "Top Category"
+    },
+    "subheading": "Track your spending patterns and insights",
+    "table": {
+      "income": "Income",
+      "month": "Month",
+      "netSavings": "Net Savings",
+      "totalSpend": "Total Spend"
+    },
+    "viewAllMonths": "View All Months",
+    "vsLastMonth": "vs. Last Month",
+    "weekly": "Weekly Breakdown"
+  },
+  "settings": {
+    "data": {
+      "deleteBtn": "Delete All Data",
+      "deleteDesc": "Permanently remove all your expenses and account data. This cannot be undone.",
+      "deleteTitle": "Delete Account",
+      "exportBtn": "Export as CSV",
+      "exportDesc": "Download all your expenses in CSV format for backup or analysis.",
+      "exportTitle": "Export Data",
+      "heading": "Data & Privacy",
+      "privacyDesc": "Your expenses are encrypted and only visible to you.",
+      "privacyTitle": "Privacy"
+    },
+    "deleteModal": {
+      "body": "All your data will be permanently deleted. You cannot recover this account.",
+      "cancelBtn": "Cancel",
+      "confirmBtn": "Delete",
+      "confirmLabel": "Type DELETE to confirm",
+      "title": "Delete Account?"
+    },
+    "preferences": {
+      "budgetHint": "Set a monthly spending limit",
+      "budgetLabel": "Monthly Budget",
+      "currencyLabel": "Currency",
+      "emailNotifLabel": "Email Notifications",
+      "heading": "Preferences",
+      "notifHeading": "Notifications",
+      "pushNotifLabel": "Push Notifications",
+      "saveBtn": "Save Changes",
+      "savedMsg": "Preferences saved",
+      "themeLabel": "Theme"
+    },
+    "profile": {
+      "avatarHint": "JPG or PNG, max 2MB",
+      "avatarLabel": "Profile Photo",
+      "changePhoto": "Change Photo",
+      "emailLabel": "Email",
+      "fullNameLabel": "Full Name",
+      "heading": "Profile",
+      "saveBtn": "Save Profile",
+      "savedMsg": "Profile updated"
+    },
+    "security": {
+      "badge": "Secure",
+      "changePwDesc": "Update your password regularly to keep your account secure.",
+      "changePwTitle": "Change Password",
+      "confirmPwLabel": "Confirm Password",
+      "currentPwLabel": "Current Password",
+      "heading": "Security",
+      "newPwLabel": "New Password",
+      "pwSavedMsg": "Password updated successfully",
+      "twoFaDesc": "Add an extra layer of security to your account with two-factor authentication.",
+      "twoFaTitle": "Two-Factor Authentication",
+      "updatePwBtn": "Update Password"
+    },
+    "subtitle": "Manage your account, privacy, and security preferences",
+    "title": "Settings"
+  },
+  "testimonials": {
+    "eyebrow": "Trusted by users",
+    "headline": "See what others are saying"
+  },
+  "transactions": {
+    "addBtn": "Add Expense",
+    "dialog": {
+      "body": "Enter the expense details below to track your spending.",
+      "cancel": "Cancel",
+      "confirm": "Save Expense",
+      "title": "New Expense"
+    },
+    "filter": {
+      "filterBtn": "Filter",
+      "sortBy": "Sort by"
+    },
+    "heading": "Expenses",
+    "pagination": {
+      "next": "Next",
+      "prev": "Previous",
+      "showing": "Showing {start}–{end} of {total}"
+    },
+    "stat": {
+      "totalSpentLabel": "Total Spent",
+      "totalSpentTrend": "{value}% from last month",
+      "totalTxLabel": "Total Expenses",
+      "totalTxTrend": "{value} this month"
+    },
+    "subheading": "Track and manage all your expenses in one place",
+    "table": {
+      "actions": "Actions",
+      "amount": "Amount",
+      "category": "Category",
+      "date": "Date",
+      "deleteLabel": "Delete",
+      "description": "Description",
+      "editLabel": "Edit",
+      "empty": "No expenses yet. Start tracking by adding your first expense."
+    }
+  },
+  "trust": {
+    "item1": "Bank-level security encryption",
+    "item2": "Your data is yours alone",
+    "item3": "GDPR compliant and privacy-focused",
+    "label": "Why trust us"
+  }
+}
