@@ -474,7 +474,8 @@
       "nameLabel": "Category Name",
       "namePlaceholder": "e.g., Groceries",
       "nameRequired": "Category name is required",
-      "save": "Save"
+      "save": "Save",
+      "add": "Add category"
     },
     "monthlyLimit": "Monthly Limit",
     "noBudget": "No budget set",
@@ -494,7 +495,31 @@
     "totalCategories": "Total Categories",
     "totalSpent": "Total Spent",
     "transactions": "Transactions",
-    "used": "Used"
+    "used": "Used",
+    "card": {
+      "budget": "Budget",
+      "of": "Of",
+      "transactions": "Transactions"
+    },
+    "deleteModal": {
+      "body": "This action cannot be undone. All transactions in this category will be uncategorized.",
+      "cancel": "Cancel",
+      "confirm": "Delete",
+      "subtitle": "Are you sure?",
+      "title": "Delete category"
+    },
+    "empty": {
+      "body": "Create your first category to start organizing your spending.",
+      "title": "No categories yet"
+    },
+    "filterOverBudget": "Over budget",
+    "stats": {
+      "acrossCategories": "Across all categories",
+      "onTrack": "On track",
+      "overBudget": "Over budget",
+      "totalBudget": "Total budget",
+      "totalSpent": "Total spent"
+    }
   },
   "cta": {
     "button": "Start Tracking",
@@ -585,7 +610,11 @@
     },
     "viewAllMonths": "View All Months",
     "vsLastMonth": "vs. Last Month",
-    "weekly": "Weekly Breakdown"
+    "weekly": "Weekly Breakdown",
+    "avgDailySpend": "Average daily spend",
+    "budgetAdherence": "Budget adherence",
+    "exportCSV": "Export CSV",
+    "highestCategory": "Highest spend category"
   },
   "settings": {
     "data": {
@@ -642,7 +671,9 @@
       "updatePwBtn": "Update Password"
     },
     "subtitle": "Manage your account, privacy, and security preferences",
-    "title": "Settings"
+    "title": "Settings",
+    "heading": "Settings",
+    "subheading": "Manage your account and preferences"
   },
   "testimonials": {
     "eyebrow": "Trusted by users",

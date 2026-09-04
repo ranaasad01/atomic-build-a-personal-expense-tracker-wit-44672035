@@ -10,6 +10,7 @@ export interface NavLink {
   key: string;
   icon?: string;
   appOnly?: boolean;
+  signup?: boolean;
 }
 
 export const navLinks: NavLink[] = [
@@ -17,12 +18,14 @@ export const navLinks: NavLink[] = [
   { label: "Transactions", href: "/transactions", key: "transactions", icon: "receipt_long", appOnly: true },
   { label: "Categories", href: "/categories", key: "categories", icon: "category", appOnly: true },
   { label: "Reports", href: "/reports", key: "reports", icon: "bar_chart", appOnly: true },
+  { label: "Budget", href: "/budget", key: "budget", icon: "account_balance_wallet", appOnly: true },
   { label: "Settings", href: "/settings", key: "settings", icon: "settings", appOnly: true },
 ];
 
 export const publicNavLinks: NavLink[] = [
   { label: "Home", href: "/", key: "home" },
   { label: "Sign In", href: "/auth", key: "signin" },
+  { label: "Sign Up", href: "/signup", key: "signup" },
 ];
 
 // ─── Shared Types ────────────────────────────────────────────────────────────
@@ -119,24 +122,4 @@ export function formatDate(dateStr: string): string {
     day: "numeric",
     year: "numeric",
   });
-}
-
-export function getCategoryById(id: string | null, categories: Category[]): Category | undefined {
-  if (!id) return undefined;
-  return categories.find((c) => c.id === id);
-}
-
-export function getCategoryColor(categoryName: string): string {
-  const map: Record<string, string> = {
-    Housing: "#4f46e5",
-    "Food & Drink": "#f59e0b",
-    Transport: "#10b981",
-    Groceries: "#6366f1",
-    Software: "#3730a3",
-    Travel: "#f97316",
-    Healthcare: "#ec4899",
-    Entertainment: "#8b5cf6",
-    Other: "#94a3b8",
-  };
-  return map[categoryName] ?? "#94a3b8";
 }

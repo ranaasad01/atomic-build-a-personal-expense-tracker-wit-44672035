@@ -15,6 +15,7 @@ import {
 import { Download, TrendingUp, TrendingDown, ArrowUpRight, ArrowDownRight } from 'lucide-react';
 import { Reveal } from "@/components/Reveal";
 import { cn } from "@/lib/utils";
+import AppLayout from "@/components/AppLayout";
 
 const DAILY_DATA = [
   { label: "1st", amount: 35 },
@@ -62,301 +63,306 @@ export default function ReportsPage() {
 
   const chartData = chartView === "Daily" ? DAILY_DATA : WEEKLY_DATA;
 
+  function handleExportCSV() {
+    const rows = [
+      ["Month", "Total Spend", "Income", "Net Savings"],
+      ...MONTHLY_SUMMARY.map((r) => [
+        r.month,
+        r.spend.toFixed(2),
+        r.income.toFixed(2),
+        r.savings.toFixed(2),
+      ]),
+    ];
+    const csv = rows.map((r) => r.join(",")).join("\n");
+    const blob = new Blob([csv], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "spendwise-monthly-summary.csv";
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
   return (
-    <div className="min-h-screen bg-[var(--color-surface)] px-6 py-8">
-      {/* Page Header */}
-      <Reveal>
-        <div className="mb-8 flex items-start justify-between gap-4">
-          <div>
-            <h1 className="text-[var(--color-on-surface)] text-3xl font-bold tracking-tight">
-              {t("reports.heading")}
-            </h1>
-            <p className="mt-1 text-[var(--color-on-surface-variant)] text-base">
-              {t("reports.subheading")}
-            </p>
+    <AppLayout pageTitle="Reports">
+      <div className="max-w-[1280px] mx-auto">
+        {/* Page Header */}
+        <Reveal>
+          <div className="mb-8 flex items-start justify-between gap-4">
+            <div>
+              <h1 className="text-[var(--color-on-surface)] text-3xl font-bold tracking-tight">
+                {t("reports.heading")}
+              </h1>
+              <p className="mt-1 text-[var(--color-on-surface-variant)] text-base">
+                {t("reports.subheading")}
+              </p>
+            </div>
+            <div className="flex items-center gap-3">
+              {/* Time Range Dropdown */}
+              <div className="relative">
+                <button
+                  onClick={() => setRangeOpen((v) => !v)}
+                  className="flex items-center gap-2 rounded-lg border border-[var(--color-outline-variant)] bg-white px-4 py-2.5 text-sm font-medium text-[var(--color-on-surface)] shadow-sm transition-all duration-200 hover:border-[var(--color-primary)] hover:shadow-md"
+                >
+                  {selectedRange}
+                  <svg className="h-4 w-4 text-[var(--color-on-surface-variant)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {rangeOpen && (
+                  <div className="absolute right-0 top-full z-20 mt-1 w-44 rounded-xl border border-[var(--color-outline-variant)] bg-white py-1 shadow-lg">
+                    {TIME_RANGES.map((r) => (
+                      <button
+                        key={r}
+                        onClick={() => { setSelectedRange(r); setRangeOpen(false); }}
+                        className={cn(
+                          "w-full px-4 py-2 text-left text-sm transition-colors hover:bg-[var(--color-surface-container-low)]",
+                          r === selectedRange
+                            ? "font-semibold text-[var(--color-primary)]"
+                            : "text-[var(--color-on-surface)]"
+                        )}
+                      >
+                        {r}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
-          <div className="flex items-center gap-3">
-            {/* Time Range Dropdown */}
-            <div className="relative">
-              <button
-                onClick={() => setRangeOpen((v) => !v)}
-                className="flex items-center gap-2 rounded-lg border border-[var(--color-outline-variant)] bg-white px-4 py-2.5 text-sm font-medium text-[var(--color-on-surface)] shadow-sm transition-all duration-200 hover:border-[var(--color-primary)] hover:shadow-md"
-              >
-                {selectedRange}
-                <svg className="h-4 w-4 text-[var(--color-on-surface-variant)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              {rangeOpen && (
-                <div className="absolute right-0 top-full z-20 mt-1 w-44 rounded-xl border border-[var(--color-outline-variant)] bg-white py-1 shadow-lg">
-                  {TIME_RANGES.map((r) => (
-                    <button
-                      key={r}
-                      onClick={() => { setSelectedRange(r); setRangeOpen(false); }}
-                      className={cn(
-                        "w-full px-4 py-2 text-left text-sm transition-colors hover:bg-[var(--color-surface-container-low)]",
-                        selectedRange === r
-                          ? "font-semibold text-[var(--color-primary)]"
-                          : "text-[var(--color-on-surface)]"
-                      )}
-                    >
-                      {r}
-                    </button>
-                  ))}
+        </Reveal>
+
+        {/* ── Insight Stat Cards ── */}
+        <Reveal>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+            {/* Highest Spend Category */}
+            <div className="bg-white rounded-2xl border border-[var(--color-outline-variant)] p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.03)]">
+              <p className="text-xs font-semibold tracking-widest text-[var(--color-on-surface-variant)] uppercase mb-3">
+                {t("reports.highestCategory")}
+              </p>
+              <div className="flex items-end justify-between">
+                <div>
+                  <p className="text-2xl font-bold text-[var(--color-on-surface)] tracking-tight">Housing</p>
+                  <p className="text-sm text-[var(--color-on-surface-variant)] mt-0.5">44.2% of total spend</p>
                 </div>
-              )}
+                <div className="w-10 h-10 rounded-xl bg-[#ede9fe] flex items-center justify-center">
+                  <span className="text-[#4f46e5] text-lg">🏠</span>
+                </div>
+              </div>
             </div>
-            {/* Export Button */}
-            <button className="flex items-center justify-center rounded-lg bg-[var(--color-primary)] p-2.5 text-white shadow-sm transition-all duration-200 hover:bg-[var(--color-primary-container)] hover:shadow-md">
-              <Download className="h-5 w-5" />
-            </button>
-          </div>
-        </div>
-      </Reveal>
 
-      {/* Stat Cards Row */}
-      <Reveal delay={0.05}>
-        <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          {/* Highest Spend Category */}
-          <div className="rounded-xl border border-[var(--color-outline-variant)] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.03)]">
-            <div className="mb-3 flex items-center justify-between">
-              <span className="text-xs font-semibold uppercase tracking-widest text-[var(--color-on-surface-variant)]">
-                {t("reports.stat.highestCategory")}
-              </span>
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-rose-100 text-rose-500">
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </span>
+            {/* Average Daily Spend */}
+            <div className="bg-white rounded-2xl border border-[var(--color-outline-variant)] p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.03)]">
+              <p className="text-xs font-semibold tracking-widest text-[var(--color-on-surface-variant)] uppercase mb-3">
+                {t("reports.avgDailySpend")}
+              </p>
+              <div className="flex items-end justify-between">
+                <div>
+                  <p className="text-2xl font-bold text-[var(--color-on-surface)] tracking-tight">$113.18</p>
+                  <div className="flex items-center gap-1 mt-0.5">
+                    <ArrowUpRight className="h-3.5 w-3.5 text-[var(--color-danger)]" />
+                    <p className="text-sm text-[var(--color-danger)]">+8.4% vs last month</p>
+                  </div>
+                </div>
+                <div className="w-10 h-10 rounded-xl bg-[#fef3c7] flex items-center justify-center">
+                  <TrendingUp className="h-5 w-5 text-[#f59e0b]" />
+                </div>
+              </div>
             </div>
-            <div className="text-3xl font-bold text-[var(--color-on-surface)]">$1,245.50</div>
-            <div className="mt-2 flex items-center gap-2">
-              <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-700">
-                Food &amp; Dining
-              </span>
-              <span className="flex items-center gap-0.5 text-xs font-medium text-rose-500">
-                <ArrowUpRight className="h-3 w-3" />
-                12% {t("reports.vsLastMonth")}
-              </span>
-            </div>
-          </div>
 
-          {/* Average Daily Spend */}
-          <div className="rounded-xl border border-[var(--color-outline-variant)] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.03)]">
-            <div className="mb-3 flex items-center justify-between">
-              <span className="text-xs font-semibold uppercase tracking-widest text-[var(--color-on-surface-variant)]">
-                {t("reports.stat.avgDailySpend")}
-              </span>
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-100 text-emerald-500">
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </span>
-            </div>
-            <div className="text-3xl font-bold text-[var(--color-on-surface)]">$85.20</div>
-            <div className="mt-2 flex items-center gap-1 text-xs font-medium text-emerald-600">
-              <ArrowDownRight className="h-3 w-3" />
-              5% {t("reports.vsLastMonth")}
+            {/* Budget Adherence */}
+            <div className="bg-white rounded-2xl border border-[var(--color-outline-variant)] p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.03)]">
+              <p className="text-xs font-semibold tracking-widest text-[var(--color-on-surface-variant)] uppercase mb-3">
+                {t("reports.budgetAdherence")}
+              </p>
+              <div className="mb-2 flex items-end justify-between">
+                <p className="text-2xl font-bold text-[var(--color-on-surface)] tracking-tight">71.5%</p>
+                <div className="flex items-center gap-1">
+                  <ArrowDownRight className="h-3.5 w-3.5 text-[var(--color-success)]"/>
+                  <span className="text-sm text-[var(--color-success)]">On track</span>
+                </div>
+              </div>
+              <div className="w-full h-2 rounded-full bg-[var(--color-surface-container-high)] overflow-hidden">
+                <div
+                  className="h-full rounded-full bg-[var(--color-primary)] transition-all duration-500"
+                  style={{ width: "71.5%" }}
+                />
+              </div>
+              <p className="text-xs text-[var(--color-on-surface-variant)] mt-1.5">$2,145 of $3,000 budget used</p>
             </div>
           </div>
+        </Reveal>
 
-          {/* Budget Adherence */}
-          <div className="rounded-xl border border-[var(--color-outline-variant)] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.03)]">
-            <div className="mb-3 flex items-center justify-between">
-              <span className="text-xs font-semibold uppercase tracking-widest text-[var(--color-on-surface-variant)]">
-                {t("reports.stat.budgetAdherence")}
-              </span>
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-violet-100 text-violet-500">
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </span>
-            </div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-3xl font-bold text-[var(--color-on-surface)]">82%</span>
-              <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-semibold text-emerald-700">
-                {t("reports.onTrack")}
-              </span>
-            </div>
-            <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-[var(--color-surface-container)]">
-              <motion.div
-                className="h-full rounded-full bg-emerald-500"
-                initial={{ width: 0 }}
-                animate={{ width: "82%" }}
-                transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-              />
-            </div>
-          </div>
-        </div>
-      </Reveal>
-
-      {/* Charts Row */}
-      <Reveal delay={0.1}>
-        <div className="mb-6 grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {/* Spending Trends Chart */}
-          <div className="col-span-2 rounded-xl border border-[var(--color-outline-variant)] bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.03)]">
-            <div className="mb-5 flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-[var(--color-on-surface)]">
-                {t("reports.spendingTrends")}
-              </h2>
-              <div className="flex items-center rounded-lg border border-[var(--color-outline-variant)] p-0.5">
-                {(["Daily", "Weekly"] as const).map((view) => (
+        {/* ── Spending Trends Chart ── */}
+        <Reveal>
+          <div className="bg-white rounded-2xl border border-[var(--color-outline-variant)] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.03)] mb-6">
+            <div className="flex items-center justify-between mb-5">
+              <div>
+                <h2 className="text-base font-semibold text-[var(--color-on-surface)]">
+                  {t("reports.spendingTrends")}
+                </h2>
+                <p className="text-sm text-[var(--color-on-surface-variant)] mt-0.5">
+                  {selectedRange}
+                </p>
+              </div>
+              {/* Daily / Weekly toggle */}
+              <div className="flex items-center gap-1 rounded-lg border border-[var(--color-outline-variant)] bg-[var(--color-surface-container-low)] p-1">
+                {(["Daily", "Weekly"] as const).map((v) => (
                   <button
-                    key={view}
-                    onClick={() => setChartView(view)}
+                    key={v}
+                    onClick={() => setChartView(v)}
                     className={cn(
-                      "rounded-md px-3 py-1.5 text-sm font-medium transition-all duration-200",
-                      chartView === view
-                        ? "bg-[var(--color-surface-container-low)] text-[var(--color-primary)]"
+                      "px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-200",
+                      chartView === v
+                        ? "bg-white text-[var(--color-primary)] shadow-sm border border-[var(--color-outline-variant)]"
                         : "text-[var(--color-on-surface-variant)] hover:text-[var(--color-on-surface)]"
                     )}
                   >
-                    {view === "Daily" ? t("reports.daily") : t("reports.weekly")}
+                    {v}
                   </button>
                 ))}
               </div>
             </div>
-            <ResponsiveContainer width="100%" height={220}>
-              <AreaChart data={chartData} margin={{ top: 5, right: 10, left: 0, bottom: 0 }}>
+            <ResponsiveContainer width="100%" height={240}>
+              <AreaChart data={chartData} margin={{ top: 4, right: 4, left: -16, bottom: 0 }}>
                 <defs>
                   <linearGradient id="spendGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#4f46e5" stopOpacity={0.15} />
+                    <stop offset="5%" stopColor="#4f46e5" stopOpacity={0.18} />
                     <stop offset="95%" stopColor="#4f46e5" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f8" vertical={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--color-outline-variant)" vertical={false} />
                 <XAxis
                   dataKey="label"
-                  tick={{ fontSize: 12, fill: "#777587" }}
+                  tick={{ fontSize: 12, fill: "var(--color-on-surface-variant)" }}
                   axisLine={false}
                   tickLine={false}
                 />
                 <YAxis
-                  tick={{ fontSize: 12, fill: "#777587" }}
+                  tick={{ fontSize: 12, fill: "var(--color-on-surface-variant)" }}
                   axisLine={false}
                   tickLine={false}
                   tickFormatter={(v) => `$${v}`}
                 />
                 <Tooltip
                   contentStyle={{
-                    borderRadius: "0.75rem",
-                    border: "1px solid #c7c4d8",
-                    boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+                    borderRadius: "10px",
+                    border: "1px solid var(--color-outline-variant)",
                     fontSize: "13px",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
                   }}
-                  formatter={(value: number) => [`$${value}`, "Spent"]}
+                  formatter={(value: number) => [formatCurrency(value), "Spend"]}
                 />
                 <Area
                   type="monotone"
                   dataKey="amount"
                   stroke="#4f46e5"
-                  strokeWidth={2}
+                  strokeWidth={2.5}
                   fill="url(#spendGradient)"
-                  dot={{ r: 3, fill: "#4f46e5", strokeWidth: 0 }}
-                  activeDot={{ r: 5, fill: "#4f46e5", strokeWidth: 2, stroke: "#fff" }}
+                  dot={{ r: 4, fill: "#4f46e5", strokeWidth: 0 }}
+                  activeDot={{ r: 6, fill: "#4f46e5" }}
                 />
               </AreaChart>
             </ResponsiveContainer>
           </div>
+        </Reveal>
 
+        {/* ── Bottom row: Category Split + Monthly Summary ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
           {/* Category Split */}
-          <div className="rounded-xl border border-[var(--color-outline-variant)] bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.03)]">
-            <h2 className="mb-5 text-lg font-semibold text-[var(--color-on-surface)]">
-              {t("reports.categorySplit")}
-            </h2>
-            <div className="space-y-4">
-              {CATEGORY_SPLIT.map((cat) => {
-                const pct = Math.round((cat.amount / cat.total) * 100);
-                return (
-                  <div key={cat.name}>
-                    <div className="mb-1.5 flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span
-                          className="h-2.5 w-2.5 rounded-full"
-                          style={{ backgroundColor: cat.color }}
-                        />
-                        <span className="text-sm font-medium text-[var(--color-on-surface)]">
-                          {cat.name}
-                        </span>
+          <Reveal className="lg:col-span-2">
+            <div className="bg-white rounded-2xl border border-[var(--color-outline-variant)] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.03)] h-full">
+              <h2 className="text-base font-semibold text-[var(--color-on-surface)] mb-5">
+                {t("reports.categorySplit")}
+              </h2>
+              <div className="space-y-4">
+                {CATEGORY_SPLIT.map((cat) => {
+                  const pct = Math.round((cat.amount / cat.total) * 100);
+                  return (
+                    <div key={cat.name}>
+                      <div className="flex items-center justify-between mb-1.5">
+                        <div className="flex items-center gap-2">
+                          <span
+                            className="inline-block w-2.5 h-2.5 rounded-full"
+                            style={{ background: cat.color }}
+                          />
+                          <span className="text-sm font-medium text-[var(--color-on-surface)]">{cat.name}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm text-[var(--color-on-surface-variant)]">{pct}%</span>
+                          <span className="text-sm font-semibold text-[var(--color-on-surface)] tabular-nums">
+                            {formatCurrency(cat.amount)}
+                          </span>
+                        </div>
                       </div>
-                      <span className="text-sm font-semibold text-[var(--color-on-surface)]">
-                        {formatCurrency(cat.amount)}
-                      </span>
+                      <div className="w-full h-1.5 rounded-full bg-[var(--color-surface-container-high)] overflow-hidden">
+                        <div
+                          className="h-full rounded-full transition-all duration-500"
+                          style={{ width: `${pct}%`, background: cat.color }}
+                        />
+                      </div>
                     </div>
-                    <div className="h-2 w-full overflow-hidden rounded-full bg-[var(--color-surface-container)]">
-                      <motion.div
-                        className="h-full rounded-full"
-                        style={{ backgroundColor: cat.color }}
-                        initial={{ width: 0 }}
-                        animate={{ width: `${pct}%` }}
-                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                      />
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        </div>
-      </Reveal>
+          </Reveal>
 
-      {/* Monthly Summary Table */}
-      <Reveal delay={0.15}>
-        <div className="rounded-xl border border-[var(--color-outline-variant)] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.03)]">
-          <div className="flex items-center justify-between border-b border-[var(--color-outline-variant)] px-6 py-4">
-            <h2 className="text-lg font-semibold text-[var(--color-on-surface)]">
-              {t("reports.monthlySummary")}
-            </h2>
-            <button className="text-sm font-semibold text-[var(--color-primary)] transition-colors hover:text-[var(--color-primary-container)]">
-              {t("reports.viewAllMonths")}
-            </button>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-[var(--color-outline-variant)] bg-[var(--color-surface-container-low)]">
-                  <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-widest text-[var(--color-on-surface-variant)]">
-                    {t("reports.table.month")}
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-widest text-[var(--color-on-surface-variant)]">
-                    {t("reports.table.totalSpend")}
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-widest text-[var(--color-on-surface-variant)]">
-                    {t("reports.table.income")}
-                  </th>
-                  <th className="px-6 py-3 text-right text-xs font-semibold uppercase tracking-widest text-[var(--color-on-surface-variant)]">
-                    {t("reports.table.netSavings")}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {MONTHLY_SUMMARY.map((row, i) => (
-                  <tr
-                    key={row.month}
-                    className={cn(
-                      "border-b border-[var(--color-outline-variant)] transition-colors hover:bg-[var(--color-surface-container-low)]",
-                      i === MONTHLY_SUMMARY.length - 1 && "border-b-0"
-                    )}
-                  >
-                    <td className="px-6 py-4 text-sm font-medium text-[var(--color-on-surface)]">
-                      {row.month}
-                    </td>
-                    <td className="px-6 py-4 text-sm text-[var(--color-on-surface)]">
-                      {formatCurrency(row.spend)}
-                    </td>
-                    <td className="px-6 py-4 text-sm text-[var(--color-on-surface)]">
-                      {formatCurrency(row.income)}
-                    </td>
-                    <td className="px-6 py-4 text-right text-sm font-semibold text-emerald-600">
-                      +{formatCurrency(row.savings)}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          {/* Monthly Summary Table */}
+          <Reveal className="lg:col-span-3">
+            <div className="bg-white rounded-2xl border border-[var(--color-outline-variant)] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.03)] h-full">
+              <div className="flex items-center justify-between mb-5">
+                <h2 className="text-base font-semibold text-[var(--color-on-surface)]">
+                  {t("reports.monthlySummary")}
+                </h2>
+                <button
+                  onClick={handleExportCSV}
+                  className="flex items-center gap-2 rounded-lg border border-[var(--color-outline-variant)] bg-white px-3 py-2 text-sm font-medium text-[var(--color-on-surface)] shadow-sm transition-all duration-200 hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:shadow-md"
+                >
+                  <Download className="h-4 w-4" />
+                  {t("reports.exportCSV")}
+                </button>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-[var(--color-outline-variant)]">
+                      <th className="pb-3 text-left text-xs font-semibold tracking-wider text-[var(--color-on-surface-variant)] uppercase">Month</th>
+                      <th className="pb-3 text-right text-xs font-semibold tracking-wider text-[var(--color-on-surface-variant)] uppercase">Spend</th>
+                      <th className="pb-3 text-right text-xs font-semibold tracking-wider text-[var(--color-on-surface-variant)] uppercase">Income</th>
+                      <th className="pb-3 text-right text-xs font-semibold tracking-wider text-[var(--color-on-surface-variant)] uppercase">Savings</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[var(--color-outline-variant)]">
+                    {MONTHLY_SUMMARY.map((row) => (
+                      <tr key={row.month} className="hover:bg-[var(--color-surface-container-low)] transition-colors">
+                        <td className="py-3 font-medium text-[var(--color-on-surface)]">{row.month}</td>
+                        <td className="py-3 text-right tabular-nums text-[var(--color-danger)] font-medium">
+                          {formatCurrency(row.spend)}
+                        </td>
+                        <td className="py-3 text-right tabular-nums text-[var(--color-success)] font-medium">
+                          {formatCurrency(row.income)}
+                        </td>
+                        <td className="py-3 text-right tabular-nums font-semibold">
+                          <span
+                            className={cn(
+                              row.savings >= 0
+                                ? "text-[var(--color-success)]"
+                                : "text-[var(--color-danger)]"
+                            )}
+                          >
+                            {row.savings >= 0 ? "+" : ""}{formatCurrency(row.savings)}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </Reveal>
         </div>
-      </Reveal>
-    </div>
+      </div>
+    </AppLayout>
   );
 }

@@ -26,6 +26,7 @@ export default function Footer() {
     pathname.startsWith("/reports") ||
     pathname.startsWith("/settings") ||
     pathname.startsWith("/expenses") ||
+    pathname.startsWith("/budget") ||
     pathname.startsWith("/auth");
 
   if (isAppRoute) return null;

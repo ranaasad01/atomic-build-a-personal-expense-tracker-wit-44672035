@@ -10,7 +10,7 @@ import { Bell, Search, User, Lock } from 'lucide-react';
 export default function Navbar() {
   const pathname = usePathname();
   const t = useTranslations();
-  const navT = t.raw("nav") as Record<string, string>;
+  const navT = (t.raw("nav") ?? {}) as Record<string, string>;
 
   // Determine if we're in the app shell (authenticated routes)
   const isAppRoute =
@@ -19,13 +19,14 @@ export default function Navbar() {
     pathname.startsWith("/categories") ||
     pathname.startsWith("/reports") ||
     pathname.startsWith("/settings") ||
-    pathname.startsWith("/expenses");
+    pathname.startsWith("/expenses") ||
+    pathname.startsWith("/budget");
 
   // App routes render their own top bar via AppLayout — don't double-render
   if (isAppRoute) return null;
 
-  // Auth page — no navbar
-  if (pathname.startsWith("/auth")) return null;
+  // Auth / signup pages — no navbar
+  if (pathname.startsWith("/auth") || pathname === "/signup") return null;
 
   return (
     <motion.header
@@ -102,9 +103,16 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             href="/auth"
-            className="px-4 py-2 rounded-lg bg-[var(--color-primary)] text-white text-sm font-semibold hover:bg-[var(--color-primary-container)] transition-all duration-200 shadow-sm"
+            className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-[var(--color-on-surface-variant)] hover:text-[var(--color-on-surface)] hover:bg-[var(--color-surface-container-low)] transition-all duration-200"
           >
+            <Lock className="h-4 w-4" />
             {navT["signin"] ?? "Sign In"}
+          </Link>
+          <Link
+            href="/signup"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-container)] transition-all duration-200 shadow-sm"
+          >
+            {navT["signup"] ?? "Get Started"}
           </Link>
         </div>
       </div>
@@ -112,61 +120,54 @@ export default function Navbar() {
   );
 }
 
-// ─── App Top Bar (used inside app layout) ────────────────────────────────────
+// ─── App Top Bar (used inside AppLayout) ─────────────────────────────────────
 
-interface AppTopBarProps {
+export function AppTopBar({
+  pageTitle,
+  notificationCount = 0,
+}: {
   pageTitle: string;
   notificationCount?: number;
-}
-
-export function AppTopBar({ pageTitle, notificationCount = 0 }: AppTopBarProps) {
+}) {
   const t = useTranslations();
+  const appBarT = (t.raw("appBar") ?? {}) as Record<string, string>;
 
   return (
-    <header className="h-14 bg-[var(--color-surface-container-lowest)] border-b border-[var(--color-outline-variant)] flex items-center justify-between px-6 shrink-0">
-      {/* Page title */}
-      <h1 className="text-lg font-semibold text-[var(--color-primary)] tracking-tight">
+    <header className="h-14 shrink-0 bg-[var(--color-surface-container-lowest)] border-b border-[var(--color-outline-variant)] flex items-center justify-between px-6 gap-4">
+      <h1 className="text-base font-semibold text-[var(--color-on-surface)] truncate">
         {pageTitle}
       </h1>
 
-      {/* Right controls */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2">
         {/* Search */}
-        <div className="hidden sm:flex items-center gap-2 bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)] rounded-lg px-3 py-1.5 w-52">
-          <Search className="w-4 h-4 text-[var(--color-outline)]" aria-hidden="true" />
-          <input
-            type="search"
-            placeholder={t("appBar.searchPlaceholder")}
-            className="bg-transparent text-sm text-[var(--color-on-surface)] placeholder:text-[var(--color-outline)] outline-none w-full"
-            aria-label={t("appBar.searchPlaceholder")}
-          />
+        <div className="hidden md:flex items-center gap-2 h-9 px-3 rounded-lg border border-[var(--color-outline-variant)] bg-[var(--color-surface-container-low)] text-sm text-[var(--color-on-surface-variant)]">
+          <Search className="h-4 w-4 shrink-0" />
+          <span>{appBarT["searchPlaceholder"] ?? "Search transactions..."}</span>
         </div>
 
-        {/* Private & Secure badge */}
-        <div className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)]">
-          <Lock className="w-3.5 h-3.5 text-[var(--color-outline)]" aria-hidden="true" />
-          <span className="text-xs font-medium text-[var(--color-on-surface-variant)]">
-            {t("appBar.privateSecure")}
-          </span>
-        </div>
+        {/* Private badge */}
+        <span className="hidden sm:flex items-center gap-1.5 rounded-full border border-[var(--color-outline-variant)] bg-white px-3 py-1 text-xs font-medium text-[var(--color-on-surface-variant)]">
+          <Lock className="h-3 w-3" />
+          {appBarT["privateSecure"] ?? "Private & Secure"}
+        </span>
 
-        {/* Notification bell */}
+        {/* Notifications */}
         <button
-          className="relative w-9 h-9 flex items-center justify-center rounded-lg hover:bg-[var(--color-surface-container-low)] transition-colors"
-          aria-label={t("appBar.notifications")}
+          className="relative h-9 w-9 rounded-lg flex items-center justify-center text-[var(--color-on-surface-variant)] hover:bg-[var(--color-surface-container-low)] transition-colors"
+          aria-label={appBarT["notifications"] ?? "View notifications"}
         >
-          <Bell className="w-5 h-5 text-[var(--color-on-surface-variant)]" aria-hidden="true" />
+          <Bell className="h-5 w-5" />
           {notificationCount > 0 && (
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[var(--color-error)]" />
+            <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-[var(--color-danger)]" />
           )}
         </button>
 
-        {/* User icon */}
+        {/* User avatar */}
         <button
-          className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-[var(--color-surface-container-low)] transition-colors"
-          aria-label={t("appBar.userMenu")}
+          className="h-9 w-9 rounded-full bg-[var(--color-primary-container)] flex items-center justify-center text-[var(--color-primary)] hover:opacity-80 transition-opacity"
+          aria-label={appBarT["userMenu"] ?? "User menu"}
         >
-          <User className="w-5 h-5 text-[var(--color-on-surface-variant)]" aria-hidden="true" />
+          <User className="h-4 w-4" />
         </button>
       </div>
     </header>
